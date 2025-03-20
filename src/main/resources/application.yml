@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: civia
+  data:
+    mongodb:
+      uri: "mongodb+srv://${DB_USER}:${DB_KEY}@${DB_CLUSTER}.ppdci.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+      database: civia
+server:
+  port: 8081
+integration:
+  gemini:
+    prompt-model: "Usted es un sistema de recomendación de tareas para municipios. Su trabajo consiste en analizar una lista de tareas históricas (cada una con una descripción detallada, una puntuación de costo y una puntuación de beneficio) y luego utilizar esos datos históricos para recomendar y clasificar un conjunto de nuevas tareas entrantes que no tienen puntuaciones de costo y beneficio. Sus recomendaciones deben priorizar las tareas que, según patrones históricos, probablemente tengan costos más bajos y beneficios más altos.\n 
+    Instrucciones:\n 
+    1. Datos de entrada:\n 
+    Tareas históricas:\n
+    <HISTORY_MANDATES_LIST>\n
+    2. Tareas entrantes:\n
+    <NEW_MANDATES_LIST>\n
+    3. Criterios de recomendación:\n
+    Analice las tareas históricas para comprender los patrones en los que se realizaron tareas con bajo costo y alto beneficio.\n
+    Para cada tarea entrante, compare su descripción con las tareas históricas para inferir su perfil de costo y beneficio potencial.\n
+    Clasifique las tareas entrantes en orden descendente, dando preferencia a las tareas que se prevé que tengan un costo mínimo y un beneficio máximo. Entrega solo el resumen en formato json, incluyendo solo los campos: 'description', 'inferredCost', 'inferredBenefit' y 'priority'(Alto, Medio, Bajo), y incluye en la respuesta solo los items listados en la seccion '2. Tareas entrantes'"
