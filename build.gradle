@@ -5,7 +5,20 @@ plugins {
 }
 
 group = 'com.civia.mandate'
-version = '0.0.1-SNAPSHOT'
+version = System.getenv('CURRENT_VERSION')
+
+task dockerBuildImage(type: Exec) {
+	commandLine "docker", "build", "--build-arg", "VERSION=${version}", ".", "-t", "luisorellanaa/${rootProject.name}:${version}"
+}
+
+task dockerPushImage(type: Exec) {
+	dependsOn dockerBuildImage
+	commandLine "docker", "push", "luisorellanaa/${rootProject.name}:${version}"
+}
+
+tasks.named('build') {
+	dependsOn tasks.dockerPushImage
+}
 
 java {
 	toolchain {

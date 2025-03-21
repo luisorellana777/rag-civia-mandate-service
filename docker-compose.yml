@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  rag-civia-mandate-service:
+    image: luisorellanaa/rag-civia-mandate-service:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8081"
+    restart: always
+    environment:
+      DB_CLUSTER: ""
+      DB_KEY: ""
+      DB_USER: ""
+      DB_NAME: ""
+      GEMINI-KEY: ""
