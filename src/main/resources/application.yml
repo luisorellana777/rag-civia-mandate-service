@@ -4,7 +4,7 @@ spring:
   data:
     mongodb:
       uri: "mongodb+srv://${DB_USER}:${DB_KEY}@${DB_CLUSTER}.ppdci.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-      database: civia
+      database: ${DB_NAME}
 server:
   port: 8081
 integration:
