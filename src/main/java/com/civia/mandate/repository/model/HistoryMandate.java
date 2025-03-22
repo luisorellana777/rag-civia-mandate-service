@@ -20,5 +20,6 @@ public class HistoryMandate {
     private String description;
     private String cost;
     private String benefit;
+    private String priority;
     private List<Double> embedding;
 }

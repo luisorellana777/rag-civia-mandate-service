@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "58521c12-e4a9-4f7c-bc22-8678e705e1b5",
+		"name": "Civia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3581147"
+	},
+	"item": [
+		{
+			"name": "Prioritize Mandates Gemini - Local",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\"description\": \"Compra de remedios de costo alto para personas de escasos recursos.\"},\n    {\"description\": \"Ayudas sociales tales como compra de insumos de personas postradas o movilización de personas con deficiencia renal.\"},\n    {\"description\": \"Apoyo para actividades masivas de la comunidad\"},\n    {\"description\": \"Financiamiento animalistas o organización comunitaria\"}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/prioritize/mandates",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"prioritize",
+						"mandates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save History Mandates",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\"description\": \"Pronta caída de árbol en casa habitación pasaje villa numero 380\", \"cost\": \"120.000\", \"benefit\": \"100\"},\n    {\"description\": \"Recolección de basura domiciliaria\", \"cost\": \"80.000.000 \", \"benefit\": \"100\"},\n    {\"description\": \"Ayudas sociales\", \"cost\": \"50.000 - 200.000 \", \"benefit\": \"100\"},\n    {\"description\": \"Bomberos: combustible e infraestructura\", \"cost\": \"10.000.000 -50.000.000\", \"benefit\": \"100\"},\n    {\"description\": \"Seguridad: implementación de cámaras de vigilancia\", \"cost\": \"6.000.000\", \"benefit\": \"70\"},\n    {\"description\": \"Compras de remedios para salud para la gente\", \"cost\": \"100.000.000\", \"benefit\": \"100\"},\n    {\"description\": \"Luz publica: mantención de alumbrado publico\", \"cost\": \"5.000.000\", \"benefit\": \"80\"},\n    {\"description\": \"Subvenciones de organizaciones comunitarias y territoriales para financiamiento\", \"cost\": \"200.000 – 3.000.000\", \"benefit\": \"50\"},\n    {\"description\": \"Limpieza de sitios eriazos y áreas verdes, limpieza y mantención\", \"cost\": \"100.000 – 500.000\", \"benefit\": \"40\"},\n    {\"description\": \"Apoyo para actividades masivas de la comunidad\", \"cost\": \"100.000 - 700.000\", \"benefit\": \"50\"},\n    {\"description\": \"Financiamiento animalistas o organización comunitaria\", \"cost\": \"500.000\", \"benefit\": \"50\"}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/history/mandates",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"history",
+						"mandates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Page History Mandates",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/history/mandates?page=0&size=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"history",
+						"mandates"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

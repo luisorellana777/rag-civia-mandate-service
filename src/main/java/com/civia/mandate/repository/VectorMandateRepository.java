@@ -1,10 +1,15 @@
 package com.civia.mandate.repository;
 
+import com.civia.mandate.model.MandatePage;
+import com.civia.mandate.model.MandateResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.civia.mandate.model.MandateRequest;
 import com.civia.mandate.repository.model.HistoryMandate;
 import com.civia.mandate.service.gemini.client.GeminiFlashLiteService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -49,5 +54,16 @@ public class VectorMandateRepository {
                     return HistoryMandate.builder().description(mandateRequest.getDescription()).cost(mandateRequest.getCost()).benefit(mandateRequest.getBenefit()).embedding(vector).build();
                 }).toList();
         historyMandateRepository.saveAll(historyMandates);
+    }
+
+    public MandatePage findMandatesHistoryByPagination(int page, int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<HistoryMandate> historyMandatesPage = historyMandateRepository.findAll(pageable);
+
+        List<MandateResponse> mandateResponses = historyMandatesPage.stream().map(mandateHistory -> MandateResponse.builder().description(mandateHistory.getDescription()).inferredBenefit(mandateHistory.getBenefit()).inferredCost(mandateHistory.getCost()).build()).toList();
+        MandatePage mandatePage = MandatePage.builder().content(mandateResponses).totalPages(historyMandatesPage.getTotalPages()).number(historyMandatesPage.getNumber()).numberOfElements(historyMandatesPage.getNumberOfElements()).totalElements(historyMandatesPage.getTotalElements()).build();
+        return mandatePage;
     }
 }
