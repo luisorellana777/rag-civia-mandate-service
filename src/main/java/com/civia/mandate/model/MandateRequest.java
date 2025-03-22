@@ -1,5 +1,7 @@
 package com.civia.mandate.model;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,7 +12,13 @@ import lombok.EqualsAndHashCode;
 public class MandateRequest {
 
     @EqualsAndHashCode.Include
+    @NotNull(message = "Description cannot be null")
+    @Size(min = 5, message = "Description is required")
     private String description;
+    @NotNull(message = "Cost cannot be null")
+    @Size(min = 1, message = "Cost is required")
     private String cost;
+    @NotNull(message = "Benefit cannot be null")
+    @Size(min = 1, message = "Benefit is required")
     private String benefit;
 }
