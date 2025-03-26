@@ -1,13 +1,11 @@
 package com.civia.mandate.service.gemini.client;
 
+import com.civia.mandate.dto.PromptDto;
+import com.civia.mandate.model.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.civia.mandate.model.GeminiEmbeddedRequest;
-import com.civia.mandate.model.GeminiEmbeddedsRequest;
-import com.civia.mandate.model.GeminiPromptRequest;
-import com.civia.mandate.model.MandateResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -24,16 +22,16 @@ public class GeminiFlashLiteService {
     private final WebClient geminiWebClientEmbedding;
     private final WebClient geminiWebClientEmbeddings;
 
-    public List<MandateResponse> getModelRecommendation(String inputText) throws JsonProcessingException {
+    public List<MandateResponse> getModelRecommendation(PromptDto promptDto, List<MandateRequest> newMandatesRequest) throws JsonProcessingException {
 
-        GeminiPromptRequest geminiPromptRequest = GeminiPromptRequest.builder().contents(List.of(GeminiPromptRequest.Content.builder().parts(List.of(GeminiPromptRequest.Part.builder().text(inputText).build())).build())).build();
+        GeminiPromptRequest geminiPromptRequest = GeminiPromptRequest.builder().contents(List.of(GeminiPromptRequest.Content.builder().parts(List.of(GeminiPromptRequest.Part.builder().text(promptDto.getContent()).build())).role("user").build())).generationConfig(GeminiPromptRequest.GenerationConfig.builder().response_mime_type("application/json").build()).systemInstruction(GeminiPromptRequest.Content.builder().parts(List.of(GeminiPromptRequest.Part.builder().text(promptDto.getSystemInstruction()).build())).role("model").build()).build();
         String jsonString = new ObjectMapper().writeValueAsString(geminiPromptRequest);
 
         String jsonResponse = geminiWebClientRecommendation.post()
                 .bodyValue(jsonString)
                 .retrieve()
                 .bodyToMono(String.class)
-                .block().replace("```", "").replace("json", "");
+                .block();
 
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(jsonResponse);
@@ -45,8 +43,9 @@ public class GeminiFlashLiteService {
                 .get(0)
                 .path("text");
 
-        List<MandateResponse> mandatesResponse = new ObjectMapper().readValue(textNode.asText(), new TypeReference<List<MandateResponse>>() {});
-        return mandatesResponse;
+        List<MandateResponse> mandatesResponse = new ObjectMapper().readValue(textNode.asText(), new TypeReference<>() {
+        });
+        return mandatesResponse.stream().parallel().filter(mandate->newMandatesRequest.stream().map(MandateRequest::getDescription).anyMatch(newMandate->newMandate.equals(mandate.getDescription()))).toList();
     }
 
     public List<Double> getModelEmbedding(String inputText) throws JsonProcessingException {

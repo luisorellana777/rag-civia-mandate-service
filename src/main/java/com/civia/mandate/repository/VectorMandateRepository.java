@@ -32,7 +32,6 @@ public class VectorMandateRepository {
         List<MandateRequest> mandatesRecommended = newVectors.stream().parallel().map(historyMandateRepository::vectorSearch).flatMap(List::stream)
         .distinct()
         .map(historyMandate -> MandateRequest.builder().description(historyMandate.getDescription()).cost(historyMandate.getCost()).benefit(historyMandate.getBenefit()).build())
-        .filter(mandate -> newMandatesRequest.contains(mandate.getDescription()))
         .collect(Collectors.toList());
 
 

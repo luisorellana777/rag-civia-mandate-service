@@ -1,5 +1,6 @@
 package com.civia.mandate.service.coordinator;
 
+import com.civia.mandate.dto.PromptDto;
 import com.civia.mandate.model.MandatePage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.civia.mandate.model.MandateRequest;
@@ -27,8 +28,8 @@ public class StepCoordinatorService {
     public List<MandateResponse> coordinatePrioritization(List<MandateRequest> newMandatesRequest) throws JsonProcessingException {
         //TODO: Validate in DB what mandates are already saved, separate them, add cost and benefit to them, and mark them so they don't get processed by LLM.
         List<MandateRequest> historyMandatesRequest = vectorMandateRepository.getHistoryByNewMandates(newMandatesRequest);
-        String prompt = promptCreator.createPrompt(historyMandatesRequest, newMandatesRequest);
-        List<MandateResponse> modelResponse = geminiFlashLiteService.getModelRecommendation(prompt);
+        PromptDto promptDto = promptCreator.createPrompt(historyMandatesRequest, newMandatesRequest);
+        List<MandateResponse> modelResponse = geminiFlashLiteService.getModelRecommendation(promptDto, newMandatesRequest);
         //TODO: Save BD modelResponse. Validate by description if they have already been saved.
         return modelResponse;
     }

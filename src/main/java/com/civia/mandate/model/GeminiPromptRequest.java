@@ -10,10 +10,13 @@ import java.util.List;
 public class GeminiPromptRequest {
 
     private List<Content> contents;
+    private GenerationConfig generationConfig;
+    private Content systemInstruction;
 
     @Data
     @Builder
     public static class Content {
+        private String role;
         private List<Part> parts;
     }
 
@@ -21,5 +24,11 @@ public class GeminiPromptRequest {
     @Builder
     public static class Part {
         private String text;
+    }
+
+    @Data
+    @Builder
+    public static class GenerationConfig {
+        private String response_mime_type;
     }
 }

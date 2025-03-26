@@ -11,9 +11,9 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class MandateRequest {
 
-    @EqualsAndHashCode.Include
     @NotNull(message = "Description cannot be null")
     @Size(min = 5, message = "Description is required")
+    @EqualsAndHashCode.Include
     private String description;
     @NotNull(message = "Cost cannot be null")
     @Size(min = 1, message = "Cost is required")
