@@ -24,27 +24,25 @@ public class GeminiFlashLiteService {
 
     public List<MandateResponse> getModelRecommendation(PromptDto promptDto, List<MandateRequest> newMandatesRequest) throws JsonProcessingException {
 
-        GeminiPromptRequest geminiPromptRequest = GeminiPromptRequest.builder().contents(List.of(GeminiPromptRequest.Content.builder().parts(List.of(GeminiPromptRequest.Part.builder().text(promptDto.getContent()).build())).role("user").build())).generationConfig(GeminiPromptRequest.GenerationConfig.builder().response_mime_type("application/json").build()).systemInstruction(GeminiPromptRequest.Content.builder().parts(List.of(GeminiPromptRequest.Part.builder().text(promptDto.getSystemInstruction()).build())).role("model").build()).build();
-        String jsonString = new ObjectMapper().writeValueAsString(geminiPromptRequest);
+        var geminiPromptRequest = GeminiPromptRequest.builder().contents(List.of(GeminiPromptRequest.Content.builder().parts(List.of(GeminiPromptRequest.Part.builder().text(promptDto.getContent()).build())).role("user").build())).generationConfig(GeminiPromptRequest.GenerationConfig.builder().response_mime_type("application/json").build()).systemInstruction(GeminiPromptRequest.Content.builder().parts(List.of(GeminiPromptRequest.Part.builder().text(promptDto.getSystemInstruction()).build())).role("model").build()).build();
+        var jsonString = new ObjectMapper().writeValueAsString(geminiPromptRequest);
 
-        String jsonResponse = geminiWebClientRecommendation.post()
+        var jsonResponse = geminiWebClientRecommendation.post()
                 .bodyValue(jsonString)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
 
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode rootNode = mapper.readTree(jsonResponse);
+        var rootNode = new ObjectMapper().readTree(jsonResponse);
 
-        JsonNode textNode = rootNode.path("candidates")
+        var response = rootNode.path("candidates")
                 .get(0)
                 .path("content")
                 .path("parts")
                 .get(0)
-                .path("text");
+                .path("text").asText();
 
-        List<MandateResponse> mandatesResponse = new ObjectMapper().readValue(textNode.asText(), new TypeReference<>() {
-        });
+        var mandatesResponse = new ObjectMapper().readValue(response, new TypeReference<List<MandateResponse>>() {});
         return mandatesResponse.stream().parallel().filter(mandate->newMandatesRequest.stream().map(MandateRequest::getDescription).anyMatch(newMandate->newMandate.equals(mandate.getDescription()))).toList();
     }
 
