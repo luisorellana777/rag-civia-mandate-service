@@ -1,4 +1,4 @@
-package com.civia.mandate.model;
+package com.civia.mandate.dto.gemini;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,16 +7,10 @@ import java.util.List;
 
 @Data
 @Builder
-public class GeminiEmbeddedsRequest {
+public class GeminiEmbeddedRequest {
 
-    private List<Request> requests;
+    private Content content;
 
-    @Data
-    @Builder
-    public static class Request {
-        private String model;
-        private Content content;
-    }
     @Data
     @Builder
     public static class Content {

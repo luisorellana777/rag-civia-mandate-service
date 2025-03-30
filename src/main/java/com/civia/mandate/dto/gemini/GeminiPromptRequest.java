@@ -1,4 +1,4 @@
-package com.civia.mandate.model;
+package com.civia.mandate.dto.gemini;
 
 import lombok.Builder;
 import lombok.Data;

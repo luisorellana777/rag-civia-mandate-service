@@ -1,4 +1,4 @@
-package com.civia.mandate.model;
+package com.civia.mandate.dto.inout;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class MandateRequest {
+public class MandateHistoryRequest {
 
     @NotNull(message = "Description cannot be null")
     @Size(min = 5, message = "Description is required")
