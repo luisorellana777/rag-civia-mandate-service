@@ -1,6 +1,6 @@
 package com.civia.mandate.repository;
 
-import com.civia.mandate.model.HistoryMandateModel;
+import com.civia.mandate.repository.model.HistoryMandateModel;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

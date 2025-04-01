@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class LlmMandateResponse {
+public class LlmInferringResponse {
 
     @EqualsAndHashCode.Include
     private String request;
@@ -23,7 +23,7 @@ public class LlmMandateResponse {
     private String explanation;
 
     @JsonCreator
-    public LlmMandateResponse(@JsonProperty("request") String request, @JsonProperty("inferredCost") String inferredCost, @JsonProperty("inferredBenefit") String inferredBenefit, @JsonProperty("priority") String priority, @JsonProperty("explanation") String explanation) {
+    public LlmInferringResponse(@JsonProperty("request") String request, @JsonProperty("inferredCost") String inferredCost, @JsonProperty("inferredBenefit") String inferredBenefit, @JsonProperty("priority") String priority, @JsonProperty("explanation") String explanation) {
         this.request = request;
         this.inferredCost = inferredCost;
         this.inferredBenefit = inferredBenefit;

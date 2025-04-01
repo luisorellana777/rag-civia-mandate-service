@@ -31,7 +31,7 @@ public class MandateRequest {
     private byte[] signature;
 
     @NotNull(message = "Rut cannot be null")
-    @Size(min = 5, max=11, message = "Rut is required")
+    @Size(min = 5, max=14, message = "Rut is required")
     private String rut;
 
     @NotNull(message = "Phone Number cannot be null")

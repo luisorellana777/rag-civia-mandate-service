@@ -1,9 +1,8 @@
 package com.civia.mandate.repository;
 
 import com.civia.mandate.dto.MandateDto;
-import com.civia.mandate.dto.inout.MandateRequest;
 import com.civia.mandate.mapper.MandateMapper;
-import com.civia.mandate.model.MandateModel;
+import com.civia.mandate.repository.model.MandateModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;

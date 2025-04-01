@@ -3,7 +3,7 @@ package com.civia.mandate.mapper;
 import com.civia.mandate.dto.MandateDto;
 import com.civia.mandate.dto.inout.MandateRequest;
 import com.civia.mandate.dto.inout.MandateResponse;
-import com.civia.mandate.model.MandateModel;
+import com.civia.mandate.repository.model.MandateModel;
 import org.mapstruct.Mapper;
 
 import java.util.List;

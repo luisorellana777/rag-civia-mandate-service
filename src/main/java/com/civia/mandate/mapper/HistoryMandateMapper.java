@@ -4,7 +4,7 @@ import com.civia.mandate.dto.HistoryMandateDto;
 import com.civia.mandate.dto.inout.MandateHistoryRequest;
 import com.civia.mandate.dto.inout.MandateHistoryResponse;
 import com.civia.mandate.dto.inout.MandatePageResponse;
-import com.civia.mandate.model.HistoryMandateModel;
+import com.civia.mandate.repository.model.HistoryMandateModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

@@ -1,4 +1,4 @@
-package com.civia.mandate.model;
+package com.civia.mandate.repository.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -33,6 +33,8 @@ public class MandateModel {
     private String rut;
 
     private String phoneNumber;
+
+    private String requestSummarization;
 
     private String inferredCost;
 

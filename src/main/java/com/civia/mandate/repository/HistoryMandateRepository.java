@@ -6,7 +6,7 @@ import com.civia.mandate.dto.inout.MandateHistoryResponse;
 import com.civia.mandate.dto.inout.MandatePageResponse;
 import com.civia.mandate.mapper.HistoryMandateMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.civia.mandate.model.HistoryMandateModel;
+import com.civia.mandate.repository.model.HistoryMandateModel;
 import com.civia.mandate.service.gemini.client.GeminiFlashLiteService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -30,8 +30,8 @@ public class HistoryMandateRepository {
 
     public List<HistoryMandateDto> getHistoryByNewMandates(List<MandateDto> mandatesDto) throws JsonProcessingException {
 
-        List<String> newMandatesRequests = mandatesDto.stream().map(mandate -> mandate.getRequest()).toList();
-        List<List<Double>> newVectors = geminiFlashLiteService.getModelEmbeddings(newMandatesRequests);
+        List<String> newMandatesSummarizationRequests = mandatesDto.stream().map(mandate -> mandate.getRequestSummarization()).toList();
+        List<List<Double>> newVectors = geminiFlashLiteService.getModelEmbeddings(newMandatesSummarizationRequests);
 
         List<HistoryMandateDto> mandatesRecommended = newVectors.stream().parallel().map(historyMandateModelRepository::vectorSearch).flatMap(List::stream)
         .distinct()

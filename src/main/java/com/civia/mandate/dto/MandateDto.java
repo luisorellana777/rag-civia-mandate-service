@@ -28,6 +28,8 @@ public class MandateDto {
 
     private String phoneNumber;
 
+    private String requestSummarization;
+
     private String inferredCost;
 
     private String inferredBenefit;

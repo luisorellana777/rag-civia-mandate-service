@@ -3,7 +3,6 @@ package com.civia.mandate.service.coordinator;
 import com.civia.mandate.dto.MandateDto;
 import com.civia.mandate.dto.HistoryMandateDto;
 import com.civia.mandate.dto.inout.MandateRequest;
-import com.civia.mandate.dto.inout.LlmMandateResponse;
 import com.civia.mandate.dto.PromptDto;
 import com.civia.mandate.dto.inout.MandateResponse;
 import com.civia.mandate.mapper.MandateMapper;
@@ -32,9 +31,14 @@ public class MandatesService {
         List<MandateDto> mandatesDto = mapper.requestToDtoList(newMandatesRequest);
         mandatesDto = mandateRepository.getUnsavedMandates(mandatesDto);
         if(mandatesDto.isEmpty()) return List.of();
+        PromptDto promptSummarizationDto = promptCreator.createSummarizationPrompt(mandatesDto);
+        mandatesDto = geminiFlashLiteService.getRequestSummarization(promptSummarizationDto, mandatesDto);
+
         List<HistoryMandateDto> historyMandatesDto = historyMandateRepository.getHistoryByNewMandates(mandatesDto);
-        PromptDto promptDto = promptCreator.createPrompt(historyMandatesDto, newMandatesRequest);
-        mandatesDto = geminiFlashLiteService.getModelRecommendation(promptDto, mandatesDto);
+
+        PromptDto promptInferencePrioritizationDto = promptCreator.createInferencePrioritizationPrompt(historyMandatesDto, mandatesDto);
+        mandatesDto = geminiFlashLiteService.getModelRecommendation(promptInferencePrioritizationDto, mandatesDto);
+
         List<MandateDto> savedMandatesDto = mandateRepository.saveMandates(mandatesDto);
         return mapper.dtoToResponse(savedMandatesDto);
     }
