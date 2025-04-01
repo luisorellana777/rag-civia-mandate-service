@@ -37,12 +37,6 @@ public interface HistoryMandateMapper {
     })
     HistoryMandateModel dtoToModel(HistoryMandateDto dto);
 
-    @Mappings({
-            @Mapping(target = "id", source = "model.id"),
-            @Mapping(target = "description", source = "model.description"),
-            @Mapping(target = "cost", source = "model.cost"),
-            @Mapping(target = "benefit", source = "model.benefit")
-    })
     HistoryMandateDto modelToDto(HistoryMandateModel model);
 
     @Mappings({

@@ -4,7 +4,7 @@ services:
   rag-civia-mandate-service:
     image: luisorellanaa/rag-civia-mandate-service:0.0.2-SNAPSHOT
     ports:
-      - "8081:8081"
+      - "8088:8088"
     restart: always
     environment:
       DB_CLUSTER: ""

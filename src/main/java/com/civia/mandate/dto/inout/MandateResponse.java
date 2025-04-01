@@ -11,6 +11,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class MandateResponse {
 
+    private String id;
+
     private String name;
 
     private String address;

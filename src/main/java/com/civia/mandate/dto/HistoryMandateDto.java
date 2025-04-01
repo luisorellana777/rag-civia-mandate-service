@@ -14,4 +14,5 @@ public class HistoryMandateDto {
     private String description;
     private String cost;
     private String benefit;
+    private float score;
 }

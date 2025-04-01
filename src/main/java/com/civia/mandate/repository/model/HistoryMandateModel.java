@@ -20,4 +20,5 @@ public class HistoryMandateModel {
     private String cost;
     private String benefit;
     private List<Double> embedding;
+    private float score;
 }

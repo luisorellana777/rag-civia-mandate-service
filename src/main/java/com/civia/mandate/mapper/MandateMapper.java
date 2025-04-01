@@ -17,5 +17,7 @@ public interface MandateMapper {
 
     List<MandateModel> dtoToModel(List<MandateDto> noExistingMandatesDtos);
 
+    List<MandateDto> modelToDto(List<MandateModel> noExistingMandatesDtos);
+
     List<MandateResponse> dtoToResponse(List<MandateDto> savedMandatesDto);
 }
