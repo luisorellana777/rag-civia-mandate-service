@@ -1,5 +1,6 @@
 package com.civia.mandate.repository.model;
 
+import com.civia.mandate.dto.Status;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -43,4 +44,6 @@ public class MandateModel {
     private String priority;
 
     private String explanation;
+
+    private Status status;
 }

@@ -2,6 +2,8 @@ package com.civia.mandate.service.coordinator;
 
 import com.civia.mandate.dto.MandateDto;
 import com.civia.mandate.dto.HistoryMandateDto;
+import com.civia.mandate.dto.Status;
+import com.civia.mandate.dto.inout.MandatePageResponse;
 import com.civia.mandate.dto.inout.MandateRequest;
 import com.civia.mandate.dto.PromptDto;
 import com.civia.mandate.dto.inout.MandateResponse;
@@ -26,7 +28,7 @@ public class MandatesService {
     private MandateRepository mandateRepository;
     private MandateMapper mapper;
 
-    public List<MandateResponse> coordinatePrioritization(List<MandateRequest> newMandatesRequest) throws JsonProcessingException {
+    public List<MandateResponse> saveNewMandate(List<MandateRequest> newMandatesRequest) throws JsonProcessingException {
 
         List<MandateDto> mandatesDto = mapper.requestToDtoList(newMandatesRequest);
         mandatesDto = mandateRepository.getUnsavedMandates(mandatesDto);
@@ -39,8 +41,20 @@ public class MandatesService {
         PromptDto promptInferencePrioritizationDto = promptCreator.createInferencePrioritizationPrompt(historyMandatesDto, mandatesDto);
         mandatesDto = geminiFlashLiteService.getModelRecommendation(promptInferencePrioritizationDto, mandatesDto);
 
-        List<MandateDto> savedMandatesDto = mandateRepository.saveMandates(mandatesDto);
-        return mapper.dtoToResponse(savedMandatesDto);
+        List<MandateDto> savedMandatesDto = mandateRepository.saveNewMandates(mandatesDto);
+        return mapper.dtoToResponses(savedMandatesDto);
     }
 
+    public MandatePageResponse getMandates(int page, int size) {
+        return mandateRepository.findMandatesByPagination(page, size);
+    }
+
+    public MandateResponse updateMandateState(String id, Status status) {
+        MandateDto mandateDto = mandateRepository.updateStatus(id, status);
+        return mapper.dtoToResponse(mandateDto);
+    }
+
+    public MandatePageResponse getMandatesByState(Status status, int page, int size) {
+        return mandateRepository.getMandates(status, page, size);
+    }
 }

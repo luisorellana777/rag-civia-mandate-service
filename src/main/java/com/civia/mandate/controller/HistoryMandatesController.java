@@ -20,14 +20,14 @@ public class HistoryMandatesController {
     private HistoryMandateService service;
 
     @PostMapping
-    public ResponseEntity saveMandates(@Valid @RequestBody List<MandateHistoryRequest> historyMandateRequest) throws JsonProcessingException {
+    public ResponseEntity saveHistoryMandates(@Valid @RequestBody List<MandateHistoryRequest> historyMandateRequest) throws JsonProcessingException {
 
         service.saveMandates(historyMandateRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<MandatePageResponse> getMandates(@RequestParam(defaultValue = "0") int page,
+    public ResponseEntity<MandatePageResponse> getHistoryMandates(@RequestParam(defaultValue = "0") int page,
                                                            @RequestParam(defaultValue = "10") int size) throws JsonProcessingException {
 
         MandatePageResponse pagesMandates = service.getMandates(page, size);

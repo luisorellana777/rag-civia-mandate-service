@@ -1,13 +1,11 @@
 package com.civia.mandate.dto;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@Builder
+@Builder(toBuilder=true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class MandateDto {
 
@@ -39,4 +37,6 @@ public class MandateDto {
     private String priority;
 
     private String explanation;
+
+    private Status status;
 }

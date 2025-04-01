@@ -1,5 +1,6 @@
 package com.civia.mandate.dto.inout;
 
+import com.civia.mandate.dto.Status;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
@@ -38,4 +39,6 @@ public class MandateResponse {
     private String priority;
 
     private String explanation;
+
+    private Status status;
 }
