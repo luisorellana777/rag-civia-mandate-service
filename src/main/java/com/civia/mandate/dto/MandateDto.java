@@ -38,5 +38,7 @@ public class MandateDto {
 
     private String explanation;
 
+    private String department;
+
     private Status status;
 }

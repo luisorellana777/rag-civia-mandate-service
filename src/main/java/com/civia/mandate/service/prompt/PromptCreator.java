@@ -22,7 +22,7 @@ public class PromptCreator {
 
     public PromptDto createInferencePrioritizationPrompt(List<HistoryMandateDto> historyMandatesRequest, List<MandateDto> mandatesDto){
 
-        var historyMandatesPromptStyle = historyMandatesRequest.stream().map(mandate -> "*".concat(mandate.getDescription()).concat(" Costo: ").concat(mandate.getCost()).concat("Beneficio: ").concat(mandate.getBenefit()).concat("\n")).toList();
+        var historyMandatesPromptStyle = historyMandatesRequest.stream().map(mandate -> "*".concat(mandate.getDescription()).concat(" Costo: ").concat(mandate.getCost()).concat("Beneficio: ").concat(mandate.getBenefit()).concat("Departamento: ").concat(mandate.getDepartment()).concat("\n")).toList();
         String systemInstructionPrompt = systemInstructionPrioritization.replaceFirst(HISTORY_MANDATES_TOKEN, String.join(" \n ", historyMandatesPromptStyle));
 
         var newMandatesPromptStyle = mandatesDto.stream().map(mandate -> "*".concat(mandate.getRequestSummarization())).toList();

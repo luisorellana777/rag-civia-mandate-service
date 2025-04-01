@@ -17,4 +17,6 @@ public class MandateHistoryResponse {
     private String inferredCost;
 
     private String inferredBenefit;
+
+    private String inferredDepartment;
 }

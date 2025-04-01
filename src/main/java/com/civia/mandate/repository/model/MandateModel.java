@@ -45,5 +45,7 @@ public class MandateModel {
 
     private String explanation;
 
+    private String department;
+
     private Status status;
 }

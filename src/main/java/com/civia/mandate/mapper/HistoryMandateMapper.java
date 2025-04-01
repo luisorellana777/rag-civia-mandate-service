@@ -43,7 +43,8 @@ public interface HistoryMandateMapper {
     @Mapping(target = "id", source = "model.id"),
     @Mapping(target = "description", source = "model.description"),
     @Mapping(target = "inferredCost", source = "model.cost"),
-    @Mapping(target = "inferredBenefit", source = "model.benefit")})
+    @Mapping(target = "inferredBenefit", source = "model.benefit"),
+    @Mapping(target = "inferredDepartment", source = "model.department")})
     MandateHistoryResponse modelToResponse(HistoryMandateModel model);
 
     @Mappings({

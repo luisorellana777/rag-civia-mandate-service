@@ -22,12 +22,15 @@ public class LlmInferringResponse {
 
     private String explanation;
 
+    private String department;
+
     @JsonCreator
-    public LlmInferringResponse(@JsonProperty("request") String request, @JsonProperty("inferredCost") String inferredCost, @JsonProperty("inferredBenefit") String inferredBenefit, @JsonProperty("priority") String priority, @JsonProperty("explanation") String explanation) {
+    public LlmInferringResponse(@JsonProperty("request") String request, @JsonProperty("inferredCost") String inferredCost, @JsonProperty("inferredBenefit") String inferredBenefit, @JsonProperty("priority") String priority, @JsonProperty("explanation") String explanation, @JsonProperty("department") String department) {
         this.request = request;
         this.inferredCost = inferredCost;
         this.inferredBenefit = inferredBenefit;
         this.priority = priority;
         this.explanation = explanation;
+        this.department = department;
     }
 }

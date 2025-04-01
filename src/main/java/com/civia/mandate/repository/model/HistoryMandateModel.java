@@ -19,6 +19,7 @@ public class HistoryMandateModel {
     private String description;
     private String cost;
     private String benefit;
+    private String department;
     private List<Double> embedding;
     private float score;
 }

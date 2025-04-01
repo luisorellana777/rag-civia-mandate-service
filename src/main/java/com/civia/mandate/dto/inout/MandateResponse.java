@@ -40,5 +40,7 @@ public class MandateResponse {
 
     private String explanation;
 
+    private String department;
+
     private Status status;
 }
