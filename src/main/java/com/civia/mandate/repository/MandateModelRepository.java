@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.Update;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -16,8 +17,8 @@ public interface MandateModelRepository extends MongoRepository<MandateModel, St
     boolean existsByRequest(String request);
 
     @Query("{ '_id': ?0 }")
-    @Update("{ '$set': { 'status': ?1 } }")
-    void updateMandatesById(String id, Status status);
+    @Update("{ '$set': { 'status': ?1,  'updatedAt': ?2} }")
+    void updateMandatesById(String id, Status status, LocalDateTime createdAt);
 
     Page<MandateModel> findByStatus(Status status, Pageable pageable);
 

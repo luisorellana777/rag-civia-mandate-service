@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -30,7 +31,7 @@ public class MandateRepository {
         List<MandateDto> noExistingMandatesDtos = getUnsavedMandates(mandateDtos);
         if(noExistingMandatesDtos.isEmpty()) return noExistingMandatesDtos;
 
-        noExistingMandatesDtos = noExistingMandatesDtos.stream().map(mandateDto -> mandateDto.toBuilder().status(Status.CREADO).build()).toList();
+        noExistingMandatesDtos = noExistingMandatesDtos.stream().map(mandateDto -> mandateDto.toBuilder().status(Status.CREADO).createdAt(LocalDateTime.now()).build()).toList();
 
         List<MandateModel> mandatesModel = mapper.dtoToModel(noExistingMandatesDtos);
         List<MandateDto> savedMandates = mapper.modelToDto(mandateModelRepository.saveAll(mandatesModel));
@@ -60,7 +61,7 @@ public class MandateRepository {
 
     public MandateDto updateStatus(String id, Status status) {
 
-        mandateModelRepository.updateMandatesById(id, status);
+        mandateModelRepository.updateMandatesById(id, status, LocalDateTime.now());
 
         MandateModel mandateModel = mandateModelRepository.findById(id).orElse(MandateModel.builder().build());
 

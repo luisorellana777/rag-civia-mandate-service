@@ -201,7 +201,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8088/mandates/67ec524abee6482c7df49e3e/status?status=EN_PROCESO",
+					"raw": "http://localhost:8088/mandates/67ec619ec878247a45114c1f/status?status=EN_PROCESO",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -209,7 +209,7 @@
 					"port": "8088",
 					"path": [
 						"mandates",
-						"67ec524abee6482c7df49e3e",
+						"67ec619ec878247a45114c1f",
 						"status"
 					],
 					"query": [
