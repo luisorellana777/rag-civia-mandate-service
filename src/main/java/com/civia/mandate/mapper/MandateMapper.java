@@ -17,6 +17,18 @@ public interface MandateMapper {
 
     List<MandateDto> requestToDtoList(List<MandateRequest> request);
 
+    @Mappings({
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "requestSummarization", ignore = true),
+            @Mapping(target = "inferredCost", ignore = true),
+            @Mapping(target = "inferredBenefit", ignore = true),
+            @Mapping(target = "priority", ignore = true),
+            @Mapping(target = "explanation", ignore = true),
+            @Mapping(target = "department", ignore = true),
+            @Mapping(target = "status", ignore = true),
+            @Mapping(target = "createdAt", ignore = true),
+            @Mapping(target = "updatedAt", ignore = true)
+    })
     MandateDto requestToDto(MandateRequest request);
 
     List<MandateModel> dtoToModel(List<MandateDto> noExistingMandatesDtos);

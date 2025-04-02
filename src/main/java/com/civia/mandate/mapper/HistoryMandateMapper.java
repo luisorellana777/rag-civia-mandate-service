@@ -25,7 +25,9 @@ public interface HistoryMandateMapper {
     @Mappings({
             @Mapping(target = "description", source = "description"),
             @Mapping(target = "cost", source = "cost"),
-            @Mapping(target = "benefit", source = "benefit")
+            @Mapping(target = "benefit", source = "benefit"),
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "score", ignore = true)
     })
     HistoryMandateDto requestToDto(MandateHistoryRequest request);
 
@@ -33,7 +35,8 @@ public interface HistoryMandateMapper {
             @Mapping(target = "id", source = "dto.id"),
             @Mapping(target = "description", source = "dto.description"),
             @Mapping(target = "cost", source = "dto.cost"),
-            @Mapping(target = "benefit", source = "dto.benefit")
+            @Mapping(target = "benefit", source = "dto.benefit"),
+            @Mapping(target = "embedding", ignore = true)
     })
     HistoryMandateModel dtoToModel(HistoryMandateDto dto);
 
