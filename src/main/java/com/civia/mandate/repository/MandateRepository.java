@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 @AllArgsConstructor
@@ -47,18 +48,6 @@ public class MandateRepository {
         return noExistingMandatesDtos;
     }
 
-    public MandatePageResponse findMandatesByPagination(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-
-        Page<MandateModel> mandatesPage = mandateModelRepository.findAll(pageable);
-
-        List<MandateDto> mandateDto = mandatesPage.stream().map(mapper::modelToDto).toList();
-        MandatePageResponse mandatePageResponse = mapper.pageToPageResponse(mandatesPage);
-        mandatePageResponse.setContent(mandateDto);
-
-        return mandatePageResponse;
-    }
-
     public MandateDto updateStatus(String id, Status status) {
 
         mandateModelRepository.updateMandatesById(id, status, LocalDateTime.now());
@@ -68,11 +57,30 @@ public class MandateRepository {
         return mapper.modelToDto(mandateModel);
     }
 
-    public MandatePageResponse getMandates(Status status, int page, int size) {
+    public MandatePageResponse getMandates(Status status, String department, int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size);
 
-        Page<MandateModel> mandatesPage = mandateModelRepository.findByStatus(status, pageable);
+        Page<MandateModel> mandatesPage;
+
+        boolean noDepartment = Objects.isNull(department) || department.isEmpty() || department.isBlank();
+
+        if(Objects.isNull(status) && noDepartment){
+
+            mandatesPage = mandateModelRepository.findAll(pageable);
+
+        }else if (Objects.nonNull(status) && noDepartment){
+
+            mandatesPage = mandateModelRepository.findByStatus(status, pageable);
+
+        }else if(Objects.isNull(status)){
+
+            mandatesPage = mandateModelRepository.findByDepartment(department, pageable);
+
+        }else{
+            mandatesPage = mandateModelRepository.findByStatusAndDepartment(status, department, pageable);
+        }
+
 
         List<MandateDto> mandateDto = mandatesPage.stream().map(mapper::modelToDto).toList();
         MandatePageResponse mandatePageResponse = mapper.pageToPageResponse(mandatesPage);

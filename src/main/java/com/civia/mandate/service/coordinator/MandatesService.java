@@ -45,16 +45,12 @@ public class MandatesService {
         return mapper.dtoToResponses(savedMandatesDto);
     }
 
-    public MandatePageResponse getMandates(int page, int size) {
-        return mandateRepository.findMandatesByPagination(page, size);
-    }
-
     public MandateResponse updateMandateState(String id, Status status) {
         MandateDto mandateDto = mandateRepository.updateStatus(id, status);
         return mapper.dtoToResponse(mandateDto);
     }
 
-    public MandatePageResponse getMandatesByState(Status status, int page, int size) {
-        return mandateRepository.getMandates(status, page, size);
+    public MandatePageResponse getMandatesByStateAndDepartment(Status status, String department, int page, int size) {
+        return mandateRepository.getMandates(status, department, page, size);
     }
 }

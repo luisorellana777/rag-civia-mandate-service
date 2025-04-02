@@ -130,7 +130,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Mandates",
+			"name": "Get Mandates By Status And Department",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -155,7 +155,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8088/mandates?page=0&size=20",
+					"raw": "http://localhost:8088/mandates?department=Departamento de Salud&page=0&size=20",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -165,6 +165,17 @@
 						"mandates"
 					],
 					"query": [
+						{
+							"key": "department",
+							"value": "Departamento de Salud",
+							"description": "If no department and status sent, then all mandates will be retrieved"
+						},
+						{
+							"key": "status",
+							"value": "CREADO",
+							"description": "If no department and status sent, then all mandates will be retrieved",
+							"disabled": true
+						},
 						{
 							"key": "page",
 							"value": "0"
@@ -216,56 +227,6 @@
 						{
 							"key": "status",
 							"value": "EN_PROCESO"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Mandates By Status",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8088/mandates/EN_PROCESO?page=0&size=20",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8088",
-					"path": [
-						"mandates",
-						"EN_PROCESO"
-					],
-					"query": [
-						{
-							"key": "page",
-							"value": "0"
-						},
-						{
-							"key": "size",
-							"value": "20"
 						}
 					]
 				}

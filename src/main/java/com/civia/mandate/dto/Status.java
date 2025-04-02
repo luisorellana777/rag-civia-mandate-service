@@ -1,16 +1,24 @@
 package com.civia.mandate.dto;
 
-import lombok.Getter;
-
-@Getter
 public enum Status {
     CREADO("Creado"),
     EN_PROCESO("En Proceso"),
     FINALIZADO("Finalizado"),
     CANCELADO("Cancelado");
 
-    private String text;
-    Status(String text) {
-            this.text = text;
-        }
+    public static final String DEFAULT_STATUS = "Creado";
+
+    private String name;
+
+    Status(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

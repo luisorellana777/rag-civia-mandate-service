@@ -27,14 +27,6 @@ public class MandatesController {
         return service.saveNewMandate(newMandateRequest);
     }
 
-    @GetMapping
-    public ResponseEntity<MandatePageResponse> getMandates(@RequestParam(defaultValue = "0") int page,
-                                                           @RequestParam(defaultValue = "10") int size) throws JsonProcessingException {
-
-        MandatePageResponse pagesMandates = service.getMandates(page, size);
-        return new ResponseEntity<>(pagesMandates, HttpStatus.OK);
-    }
-
     @PutMapping("/{id}/status")
     public ResponseEntity<MandateResponse> updateMandateState(@PathVariable String id, @RequestParam Status status) throws JsonProcessingException {
         MandateResponse updatedMandate = service.updateMandateState(id, status);
@@ -43,10 +35,10 @@ public class MandatesController {
         return new ResponseEntity<>(updatedMandateResult, statusResult);
     }
 
-    @GetMapping("/{status}")
-    public ResponseEntity<MandatePageResponse> getMandatesByState(@PathVariable Status status, @RequestParam(defaultValue = "0") int page,
+    @GetMapping
+    public ResponseEntity<MandatePageResponse> getMandatesByStateAndDepartment(@RequestParam(name = "status", required = false) Status status, @RequestParam(name = "department", required = false) String department, @RequestParam(defaultValue = "0") int page,
                                                                     @RequestParam(defaultValue = "10") int size) throws JsonProcessingException {
-        MandatePageResponse pagesMandates = service.getMandatesByState(status, page, size);
+        MandatePageResponse pagesMandates = service.getMandatesByStateAndDepartment(status, department, page, size);
         return new ResponseEntity<>(pagesMandates, HttpStatus.OK);
     }
 }
