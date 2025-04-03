@@ -4,52 +4,53 @@ import com.civia.mandate.dto.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
 @Data
-@Builder
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class MandateResponse {
 
-    private String id;
+    protected String id;
 
-    private String name;
+    protected String name;
 
-    private String address;
+    protected String address;
 
-    private String reason;
+    protected String reason;
 
-    private String request;
+    protected String request;
 
-    private String observation;
+    protected String observation;
 
-    private byte[] signature;
+    protected byte[] signature;
 
-    private String rut;
+    protected String rut;
 
-    private String phoneNumber;
+    protected String phoneNumber;
 
-    private String requestSummarization;
+    protected String requestSummarization;
 
-    private String inferredCost;
+    protected String inferredCost;
 
-    private String inferredBenefit;
+    protected String inferredBenefit;
 
-    private String priority;
+    protected String priority;
 
-    private String explanation;
+    protected String explanation;
 
-    private String department;
+    protected String department;
 
-    private Status status;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
-    private LocalDateTime createdAt;
+    protected Status status;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
-    private LocalDateTime updatedAt;
+    protected LocalDateTime createdAt;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
+    protected LocalDateTime updatedAt;
 }

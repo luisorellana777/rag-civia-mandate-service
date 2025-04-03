@@ -1,6 +1,7 @@
 package com.civia.mandate.controller;
 
 import com.civia.mandate.dto.Status;
+import com.civia.mandate.dto.inout.ClusterPageResponse;
 import com.civia.mandate.dto.inout.MandatePageResponse;
 import com.civia.mandate.dto.inout.MandateRequest;
 import com.civia.mandate.dto.inout.MandateResponse;
@@ -40,5 +41,12 @@ public class MandatesController {
                                                                     @RequestParam(defaultValue = "10") int size) throws JsonProcessingException {
         MandatePageResponse pagesMandates = service.getMandatesByStateAndDepartment(status, department, page, size);
         return new ResponseEntity<>(pagesMandates, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/cluster")
+    public ResponseEntity<ClusterPageResponse> getMandatesCluster(@PathVariable String id, @RequestParam(name = "status", required = false) Status status, @RequestParam(name = "department", required = false) String department, @RequestParam(name = "similarity") int similarity, @RequestParam(defaultValue = "0") int page,
+                                                                               @RequestParam(defaultValue = "10") int size) throws JsonProcessingException {
+        ClusterPageResponse pagesMandates = service.getMandatesCluster(id, status, department, similarity, page, size);
+        return new ResponseEntity<>(pagesMandates, Objects.nonNull(pagesMandates) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 }

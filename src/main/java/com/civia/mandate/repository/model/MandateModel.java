@@ -50,6 +50,10 @@ public class MandateModel {
 
     private Status status;
 
+    private List<Double> embedding;
+
+    private Float score;
+
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;

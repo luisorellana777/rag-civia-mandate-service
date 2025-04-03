@@ -7,6 +7,219 @@
 	},
 	"item": [
 		{
+			"name": "New Mandates",
+			"item": [
+				{
+					"name": "Save New Mandates",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n       {\"reason\": \"Bomberos: combustible e infraestructura\", \"request\": \"Estimados de la muni, Les escribo porque acá en la comunidad estamos preocupados por la situación de nuestros Bomberos. Ellos siempre están al pie del cañón cuando hay incendios, accidentes o cualquier emergencia, pero la verdad es que trabajan con lo justo y muchas veces con menos de lo que necesitan. Hemos sabido que les falta combustible para los carros, lo que complica mucho su trabajo porque a veces no pueden salir rápido a los llamados. Además, la infraestructura del cuartel deja harto que desear: falta equipamiento, herramientas y mejores condiciones para que los voluntarios puedan estar cómodos cuando les toca hacer turnos largos. Sabemos que Bomberos es voluntariado y que ellos hacen rifas y actividades para juntar plata, pero no es suficiente. Creemos que la municipalidad podría darles una mano con apoyo en bencina para los carros y con mejoras en su cuartel. Al final, son ellos los que nos ayudan cuando más lo necesitamos, así que sería bueno devolverles la mano y asegurarnos de que tengan todo lo necesario para seguir haciendo su tremenda labor. Ojalá puedan considerar esta solicitud y darnos alguna respuesta pronto. Desde ya, muchas gracias.\", \"name\": \"Elena Vargas\", \"address\": \"Av. Colón 567, Rancagua\", \"rut\": \"89.012.345-6\", \"phoneNumber\": \"+56 9 8901 2345\", \"signature\": [85, 208, 137, 24, 161, 244, 15, 71, 196, 33, 160, 87, 220, 57, 124, 237]},\n    {\"reason\": \"Seguridad: implementación de cámaras de vigilancia\", \"request\": \"Estimados de la muni, Les escribimos porque en nuestra comunidad la cosa se está poniendo fea con la delincuencia, y ya no nos sentimos seguros ni en nuestras propias casas. En las noches se han visto robos a viviendas, asaltos a vecinos que vuelven tarde del trabajo y hasta autos desmantelados en plena calle. Antes esto no pasaba tanto, pero últimamente se ha puesto peor, y necesitamos hacer algo antes de que la situación se nos vaya de las manos. Por eso, queremos pedirles que nos ayuden con la instalación de cámaras de vigilancia en los sectores más críticos. Sabemos que en otras comunas han puesto cámaras conectadas a la central de seguridad y que eso ha ayudado harto para disuadir a los delincuentes y pillar a los que andan haciendo de las suyas. No estamos pidiendo nada exagerado, solo contar con más herramientas para cuidar a nuestras familias y nuestros barrios. Ojalá puedan tomar en cuenta nuestra solicitud y darnos una solución pronto. La seguridad es un derecho de todos, y con un poco de apoyo podríamos vivir más tranquilos. Quedamos atentos a su respuesta y dispuestos a ayudar en lo que sea necesario. Desde ya, muchas gracias.\", \"name\": \"Mario Silva\", \"address\": \"Los Almendros 6789, Temuco\", \"rut\": \"90.123.456-7\", \"phoneNumber\": \"+56 9 9012 3456\", \"signature\": [119, 40, 115, 192, 243, 71, 138, 225, 69, 204, 36, 171, 94, 231, 60, 127]},\n    {\"reason\": \"Compras de remedios para salud para la gente\", \"request\": \"Estimados de la muni, Les escribo porque en nuestra comunidad hay mucha gente que necesita remedios y no tiene cómo pagarlos. Especialmente los adultos mayores, que con las pensiones bajas que reciben apenas les alcanza para lo justo, y los enfermos crónicos que tienen que tomar remedios todos los días sin falta. Los remedios están carísimos, y hay vecinos que tienen que elegir entre comprar su medicina o comprar comida, lo que no debería pasar. Por eso, queremos pedirles que nos ayuden con alguna solución, ya sea comprando remedios para quienes más lo necesitan o gestionando convenios para que salgan más baratos. Sabemos que en otras comunas han hecho farmacias populares o programas de ayuda, y sería bueno que acá se hiciera algo parecido. No pedimos que lo regalen todo, pero sí que den una mano para que nadie se quede sin su tratamiento por falta de plata. Ojalá puedan considerar nuestra solicitud y darnos una respuesta pronto. La salud es lo más importante, y no podemos dejar que la gente se enferme más por no tener acceso a sus remedios. Quedamos atentos a su respuesta. Desde ya, muchas gracias.\", \"name\": \"Patricia Martínez\", \"address\": \"Calle La Serena 123, La Serena\", \"rut\": \"01.234.567-8\", \"phoneNumber\": \"+56 9 0123 4567\", \"signature\": [76, 201, 130, 17, 154, 237, 2, 64, 189, 26, 153, 80, 213, 50, 117, 230]},\n    {\"reason\": \"Luz publica: mantención de alumbrado publico\", \"request\": \"Estimados de la muni, Les escribimos porque en nuestro sector el alumbrado público anda bien a medias, y la verdad es que ya no podemos seguir así. Hay varias calles donde las luces no prenden o parpadean toda la noche, y otras donde simplemente están malas hace meses. Esto deja todo oscuro y peligroso, porque uno no ve por dónde camina y, lo peor, es que la delincuencia se aprovecha de esto. Ya ha habido robos a casas y asaltos a vecinos que vuelven tarde del trabajo o los cabros que salen del colegio. Por eso, les pedimos que se rajen con la mantención de los focos que están malos y revisen los postes que llevan tiempo sin funcionar. Sabemos que en otros lados han cambiado las luces por unas más modernas y de bajo consumo, así que si eso fuera posible, sería un golazo. No estamos pidiendo nada del otro mundo, solo que nuestras calles tengan la iluminación que corresponde para que podamos caminar tranquilos y sin miedo. Ojalá puedan atender esta solicitud pronto, porque la seguridad y el bienestar de la comunidad dependen en gran parte de que haya buena luz en las calles. Quedamos atentos. Desde ya, muchas gracias.\", \"name\": \"Javier López\", \"address\": \"Av. Los Leones 234, Santiago\", \"rut\": \"12.345.678-9\", \"phoneNumber\": \"+56 9 1234 5678\", \"signature\": [113, 36, 111, 188, 239, 67, 134, 221, 65, 200, 32, 167, 90, 227, 56, 123]},\n    {\"reason\": \"Subvenciones de organizaciones comunitarias y territoriales para financiamiento\", \"request\": \"Estimados de la muni, Les escribimos porque acá en la comunidad hay varias organizaciones que trabajan duro para ayudar a los vecinos, pero la verdad es que sin recursos se hace difícil seguir adelante. Tenemos juntas de vecinos, clubes de adulto mayor, agrupaciones deportivas y comités de seguridad que hacen lo que pueden con rifas y actividades, pero muchas veces no alcanza ni para lo básico. Queremos pedirles que nos apoyen con subvenciones para poder financiar proyectos y seguir funcionando. No estamos hablando de montos gigantes, sino de un apoyo que nos ayude a comprar implementos, hacer mejoras en nuestras sedes, organizar talleres y actividades para los vecinos. Sabemos que en otras comunas han entregado fondos a las organizaciones comunitarias, y nos gustaría que acá también se diera esa oportunidad. Al final, estas agrupaciones ayudan a mejorar la vida en el barrio y a que la gente esté más unida. Ojalá nos puedan considerar en este tipo de apoyos, porque con un pequeño empujón podríamos hacer muchas cosas buenas para la comunidad. Quedamos atentos a su respuesta y dispuestos a hacer los trámites que correspondan. Desde ya, muchas gracias.\", \"name\": \"Camila Fuentes\", \"address\": \"Calle Los Andes 567, Calama\", \"rut\": \"23.456.789-0\", \"phoneNumber\": \"+56 9 2345 6789\", \"signature\": [70, 195, 124, 11, 148, 231, 8, 60, 183, 18, 147, 74, 207, 44, 111, 224]\n},\n    {\"reason\": \"Limpieza de sitios eriazos y áreas verdes, limpieza y mantención\", \"request\": \"Estimados de la muni, Les escribimos porque en nuestro sector hay varios sitios eriazos y áreas verdes que están en completo abandono, llenos de basura, pastizales altos y hasta ratones. La cosa es que esto no solo afea el barrio, sino que también es peligroso. Con el calor, cualquier chispa puede provocar un incendio, y con la oscuridad, estos lugares se han convertido en escondites para delincuentes o gente que anda en cosas raras. Nos gustaría pedirles que se rajen con una limpieza general y que después se haga una mantención más frecuente. No pedimos que dejen todo como plaza de ciudad grande, pero sí que saquen la mugre, corten el pasto y dejen los espacios más seguros y ordenados. Además, si pudieran instalar basureros o alguna señalética para evitar que la gente bote escombros ahí, sería de gran ayuda. Queremos que nuestro barrio esté limpio y sea un lugar seguro para todos, especialmente para los niños y adultos mayores que caminan por ahí. Ojalá puedan tomar en cuenta nuestra solicitud y darnos alguna respuesta pronto. Quedamos atentos y dispuestos a ayudar en lo que se necesite. Desde ya, muchas gracias.\", \"name\": \"Felipe González\", \"address\": \"Calle Las Palmeras 123, Chillán\", \"rut\": \"34.567.890-1\", \"phoneNumber\": \"+56 9 3456 7890\", \"signature\": [127, 42, 117, 194, 245, 73, 140, 227, 71, 206, 38, 173, 96, 233, 62, 129]},\n    {\"reason\": \"Apoyo para actividades masivas de la comunidad\", \"request\": \"Estimados de la muni, Les escribimos porque acá en la comunidad nos gusta hacer actividades donde participe toda la gente, pero muchas veces nos falta apoyo para que salgan bien. Hacemos bingos, campeonatos deportivos, celebraciones de fiestas patrias y navidad para los niños, pero todo lo logramos con rifas y la buena voluntad de los vecinos. La cosa es que cada vez cuesta más juntar plata y sin recursos todo se hace más difícil. Por eso, queremos pedirles que nos den una mano con algunas cosas básicas, como sillas, toldos, amplificación o algún aporte para premios. También sería genial si nos pueden ayudar con permisos y gestiones para usar espacios públicos sin tanta burocracia. Sabemos que en otras comunas apoyan a las organizaciones con estas cosas y nos gustaría que acá también se hiciera algo parecido. Al final, estas actividades no son solo para pasarlo bien, sino que ayudan a fortalecer la comunidad, unir a los vecinos y hacer del barrio un mejor lugar para todos. Ojalá puedan considerar esta solicitud y darnos alguna respuesta pronto. Quedamos atentos y agradecidos de antemano. Desde ya, muchas gracias.\", \"name\": \"Sofía Herrera\", \"address\": \"Av. O'Higgins 9876, San Felipe\", \"rut\": \"45.678.901-2\", \"phoneNumber\": \"+56 9 4567 8901\", \"signature\": [84, 207, 136, 23, 160, 243, 14, 70, 195, 32, 159, 86, 219, 56, 123, 236]},\n    {\"reason\": \"Financiamiento animalistas o organización comunitaria\", \"request\": \"Estimados de la muni, Les escribimos porque en nuestra comunidad hay hartos vecinos que se organizan para ayudar a los animales callejeros y también para mejorar el bienestar de la gente del sector. El problema es que todo lo hacemos con pura voluntad y con lo poco que podemos aportar de nuestro bolsillo, y la verdad es que se hace difícil seguir adelante sin recursos. Los animalistas, por ejemplo, rescatan perritos y gatitos de la calle, los llevan al veterinario, los alimentan y buscan hogares para ellos, pero cada vez hay más casos y los costos son altos. Lo mismo pasa con otras organizaciones comunitarias que hacen ollas comunes, operativos de salud o actividades para los niños, pero que necesitan apoyo para seguir funcionando. Por eso, queremos pedirles que se rajen con algún tipo de financiamiento o subvención para estas agrupaciones, ya sea con recursos directos, insumos o ayuda en la gestión de fondos. Sabemos que en otros lados hay programas de apoyo para organizaciones que trabajan por el bien de la comunidad, y creemos que aquí también se podría hacer algo parecido. Ojalá nos puedan considerar y dar una mano para seguir ayudando. Desde ya, muchas gracias.\", \"name\": \"Jorge Castro\", \"address\": \"Calle La Punta 654, Osorno\", \"rut\": \"56.789.012-3\", \"phoneNumber\": \"+56 9 5678 9012\", \"signature\": [118, 39, 114, 191, 242, 70, 137, 224, 68, 203, 35, 170, 93, 230, 59, 126]},\n    {\"request\": \"me llamo juanita perez y soy del sector de la paloma. me gustaria que el alcalde me ayude con unos pizarreños para no lloverme este invierno ya que el invierno pasado se mojaron mis pertenencias de valor y perdi hasta una cocina a gas porque le entro mucha agua. espero este año las lluvias no sean tan grandes para que no me afecte tanto pero tambien debo ser precabida y prepararme antes que suceda. es por eso sr alcalde que le quiero pedir esta ayda tan importante para mi y para quiens vivimos en esta casa ya que tambien vive conmigo mi mama adulta mayor que se encuentra prostrada y no puede pasar un mal invierno porqe tamben toam muchso medicamentos. mi rut es 11.234.765-9 vivio en sector la paloma y mi telefono 987652323\", \"name\": \"Juan Pérez\", \"address\": \"Av. Libertador Bernardo O'Higgins 1234, Santiago\", \"rut\": \"12.345.678-9\", \"phoneNumber\": \"+56 9 1234 5678\", \"signature\": [102, 23, 89, 156, 210, 45, 112, 187, 78, 241, 98, 167, 34, 203, 67, 134]}\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/mandates",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mandates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mandates By Status And Department",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/mandates?page=0&size=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mandates"
+							],
+							"query": [
+								{
+									"key": "department",
+									"value": "Departamento de Salud",
+									"description": "If no department and status sent, then all mandates will be retrieved",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "CREADO",
+									"description": "If no department and status sent, then all mandates will be retrieved",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cluster By Mandate Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/mandates/67eefac8a255d10571c9718a/cluster?similarity=76&size=4&page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mandates",
+								"67eefac8a255d10571c9718a",
+								"cluster"
+							],
+							"query": [
+								{
+									"key": "department",
+									"value": "Departamento de Seguridad Ciudadana",
+									"description": "If no department and status sent, then all mandates will be retrieved",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "CREADO",
+									"description": "If no department and status sent, then all mandates will be retrieved",
+									"disabled": true
+								},
+								{
+									"key": "similarity",
+									"value": "76"
+								},
+								{
+									"key": "size",
+									"value": "4"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Status Mandate",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/mandates/67ec619ec878247a45114c1f/status?status=EN_PROCESO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mandates",
+								"67ec619ec878247a45114c1f",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "EN_PROCESO"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "History Mandates",
 			"item": [
 				{
@@ -90,152 +303,6 @@
 								{
 									"key": "size",
 									"value": "20"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "New Mandates",
-			"item": [
-				{
-					"name": "Save New Mandates",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n    {\"reason\": \"Como comunidad, necesitamos una campaña para esterilizar perritos de la calle y para la esterilizacion de mascotas de familias de escasos recursos. Se ven muchos perritos callejeros, y varias familias que necesitan de esta ayuda.\", \"request\": \"Estimados de la muni, Les queremos pedir con urgencia que se haga una campaña de esterilización para los perritos de la calle y también para las mascotas de familias que no tienen los medios para pagar una operación así. Aquí en la comunidad hay muchos perritos sin dueño dando vueltas, algunos enfermos, otros con hambre, y la verdad es que cada vez se ven más. Además, hay varias familias que tienen sus mascotas, pero no pueden costear la esterilización, y al final los perritos siguen teniendo crías y la situación se vuelve un problema más grande. Sabemos que la muni ha hecho operativos antes, pero necesitamos que esto sea más seguido y con más difusión para que llegue a más gente. No pedimos nada imposible, solo una mano para controlar esta situación antes de que se haga peor. Con esto evitamos que más animales sufran y que la comunidad también tenga un problema menos. Ojalá nos puedan ayudar y hacer esta campaña lo antes posible. Estamos dispuestos a colaborar en lo que se necesite. Quedamos atentos a su respuesta. Desde ya, muchas gracias.\", \"name\": \"Juan Pérez\", \"address\": \"Av. Libertador Bernardo O'Higgins 1234, Santiago\", \"rut\": \"12.345.678-9\", \"phoneNumber\": \"+56 9 1234 5678\", \"signature\": [102, 23, 89, 156, 210, 45, 112, 187, 78, 241, 98, 167, 34, 203, 67, 134]},\n    {\"reason\": \"Compra de remedios de costo alto para personas de escasos recursos.\", \"request\": \"Estimados de la muni, Les escribo porque aquí en la comunidad hay varias personas que lo están pasando mal por el alto costo de los remedios. Hay vecinos enfermos que necesitan tomar medicamentos todos los días y simplemente no les alcanza la plata para comprarlos. Muchos son adultos mayores con pensiones bajísimas o familias que apenas les da para llegar a fin de mes, y comprar los remedios se les hace imposible. Al final, algunos terminan cortando el tratamiento o buscando soluciones caseras porque no tienen cómo pagarlos, y eso es un riesgo tremendo para su salud. Queremos pedirles que vean la posibilidad de ayudar con la compra de estos remedios o buscar algún convenio que los haga más baratos para la gente que realmente lo necesita. Sabemos que en otras comunas han hecho farmacias populares o programas de apoyo, y sería bueno que acá se pudiera hacer algo parecido. No estamos pidiendo que regalen todo, pero sí una mano para que nadie tenga que elegir entre comer o comprar su medicina. Ojalá puedan considerar esta solicitud y nos den una solución pronto. Quedamos atentos y disponibles para ayudar en lo que haga falta. Desde ya, muchas gracias.\", \"name\": \"María González\", \"address\": \"Calle Los Boldos 456, Concepción\", \"rut\": \"23.456.789-0\", \"phoneNumber\": \"+56 9 2345 6789\", \"signature\": [56, 178, 201, 92, 145, 222, 11, 73, 198, 33, 160, 85, 218, 59, 126, 239]},\n    {\"reason\": \"Ayudas sociales tales como compra de insumos de personas postradas o movilización de personas con deficiencia renal.\", \"request\": \"Estimados de la muni, Les escribo porque en nuestra comunidad hay varias personas que necesitan urgente ayuda con cosas básicas para poder sobrellevar su enfermedad. Hay vecinos postrados que requieren pañales, colchones especiales, alimentos y remedios, pero sus familias no tienen los recursos para costear todo. La plata no alcanza y muchas veces tienen que elegir entre pagar una cuenta o comprar los insumos que su ser querido necesita. Además, también hay personas con insuficiencia renal que deben ir varias veces a la semana a diálisis y no tienen cómo trasladarse, porque el pasaje es caro y no siempre hay alguien que los lleve. Por eso, les pedimos que como municipalidad nos echen una mano con algún tipo de apoyo para estas personas. Puede ser con entrega de insumos básicos para quienes están postrados o gestionando un medio de transporte para los pacientes que deben ir a diálisis. Sabemos que en otros lados han hecho programas de ayuda con estos temas, así que ojalá aquí también se pueda hacer algo. Les agradeceríamos mucho si nos pueden considerar y dar una solución pronto. Quedamos atentos a su respuesta. Desde ya, muchas gracias.\", \"name\": \"Carlos Sánchez\", \"address\": \"Calle El Sol 789, Viña del Mar\", \"rut\": \"34.567.890-1\", \"phoneNumber\": \"+56 9 3456 7890\", \"signature\": [123, 25, 99, 166, 220, 55, 122, 197, 88, 251, 108, 177, 44, 213, 77, 144]},\n    {\"reason\": \"La comunidad los alamos necesita aperturar una sede para junta vecinal, algo como media agua o un galpon pequeño.\", \"request\": \"Estimados de la muni, Les escribimos porque acá en la comunidad de Los Álamos necesitamos con urgencia una sede para nuestra junta vecinal. No pedimos nada lujoso, con una media agua bien hecha o un galpón pequeño nos basta para tener un lugar donde reunirnos y organizar las cosas que necesitamos como comunidad. Hasta ahora, nos hemos arreglado juntándonos en casas de vecinos o al aire libre, pero ya se hace complicado, sobre todo en invierno con la lluvia y el frío. Tener una sede nos ayudaría mucho para hacer reuniones, talleres, entregar ayudas y cualquier actividad que beneficie a los vecinos. También serviría como un espacio para la gente mayor, los niños y cualquier iniciativa que queramos impulsar para mejorar nuestro sector. Sabemos que estas cosas llevan su tiempo, pero les pedimos que nos consideren y nos ayuden a hacer esto realidad. Ojalá puedan apoyarnos con esto. Quedamos atentos a su respuesta y dispuestos a colaborar en lo que sea necesario. Desde ya, muchas gracias.\", \"name\": \"Ana Rodríguez\", \"address\": \"Los Pinos 5678, Valparaíso\", \"rut\": \"45.678.901-2\", \"phoneNumber\": \"+56 9 4567 8901\", \"signature\": [87, 202, 131, 18, 155, 238, 3, 65, 190, 27, 154, 81, 214, 51, 118, 231]},\n    \n    \n    {\"reason\": \"Pronta caída de árbol en casa habitación pasaje villa numero 380\", \"request\": \"Estimados de la muni, Les escribo porque aquí en mi casa, en el pasaje Villa N° 380, tenemos un árbol que está a punto de venirse abajo, y la verdad es que nos tiene a todos preocupados. La cuestión está toda chueca, con las raíces casi afuera y ramas que ya se están cayendo solas. Con los últimos temporales y el viento fuerte, la cosa ha empeorado harto, y en cualquier momento se nos viene encima. El problema es que si se cae, deja la grande. Podría romper el techo de la casa, aplastar un auto o, lo peor, caerle a alguien. Aquí siempre andan vecinos caminando, niños jugando y hasta adultos mayores que pasan por ahí, así que es un peligro tremendo. Nosotros hemos tratado de hacer algo, cortando algunas ramas, pero la verdad es que esto ya es mucho para nosotros. Por eso, les pedimos que se rajen con una ayuda urgente y vengan a ver qué se puede hacer antes de que pase una desgracia. Quedamos atentos a su respuesta y listos para coordinar lo que sea necesario. Desde ya, muchas gracias.\", \"name\": \"Luis Díaz\", \"address\": \"Calle San Martín 234, Temuco\", \"rut\": \"56.789.012-3\", \"phoneNumber\": \"+56 9 5678 9012\", \"signature\": [114, 37, 112, 189, 240, 68, 135, 222, 66, 201, 33, 168, 91, 228, 57, 124]},\n    {\"reason\": \"Recolección de basura domiciliaria\", \"request\": \"Estimados de la muni, Les escribo porque aquí en la comunidad estamos con tremendo problema con la recolección de basura domiciliaria. No siempre pasa el camión cuando corresponde, y cuando lo hace, muchas veces deja bolsas tiradas o pasa tan rápido que no alcanza a recoger todo. La cosa es que la basura se empieza a acumular, los perros la rompen y al final quedan todos los desperdicios regados en la calle. Con el calor, el olor es insoportable, y con la lluvia se forma un lodazal asqueroso. Sabemos que hay muchas casas y que a veces se hace difícil, pero necesitamos que el servicio funcione bien, que el camión pase los días que tiene que pasar y que se pueda coordinar mejor para que nadie se quede con la basura en la puerta. También sería bueno que se instalen contenedores en algunos puntos clave del sector, así evitamos que la basura quede tirada en cualquier lado. Ojalá puedan ayudarnos con esto, porque no es solo por comodidad, sino por salud y por el bienestar de todos. Quedamos atentos a su respuesta y a cualquier solución que puedan darnos. Desde ya, muchas gracias.\", \"name\": \"Isabel Ramírez\", \"address\": \"Calle Arturo Prat 345, Iquique\", \"rut\": \"67.890.123-4\", \"phoneNumber\": \"+56 9 6789 0123\", \"signature\": [71, 196, 125, 12, 149, 232, 9, 61, 184, 19, 148, 75, 208, 45, 112, 225]},\n    {\"reason\": \"Ayudas sociales\", \"request\": \"Estimados de la muni, Les escribimos porque acá en la comunidad hay muchas familias que lo están pasando mal y necesitan apoyo con ayudas sociales. Hay adultos mayores solos que no tienen cómo comprar sus remedios, familias con guaguas que no alcanzan para los pañales, y vecinos que apenas tienen para comer. Sabemos que la municipalidad entrega ayudas, pero muchas veces no alcanzan para todos o hay personas que no saben cómo postular. Queremos pedirles que refuercen estos apoyos y que, si se puede, amplíen la cobertura para que llegue a más gente. Sería bueno que hagan operativos en los barrios para que los vecinos puedan inscribirse más fácil y no se queden fuera los que realmente necesitan. También sería de gran ayuda contar con más entrega de mercadería, materiales de construcción para mejorar casas en mal estado y apoyo en traslado para quienes necesitan ir al hospital o a controles médicos. Sabemos que no se puede todo de una, pero ojalá nos puedan dar una mano para mejorar la calidad de vida de la gente. Quedamos atentos a su respuesta y dispuestos a colaborar en lo que haga falta. Desde ya, muchas gracias.\", \"name\": \"Ricardo Torres\", \"address\": \"Calle La Estrella 456, Antofagasta\", \"rut\": \"78.901.234-5\", \"phoneNumber\": \"+56 9 7890 1234\", \"signature\": [128, 43, 118, 195, 246, 74, 141, 228, 72, 207, 39, 174, 97, 234, 63, 130]},\n    {\"reason\": \"Bomberos: combustible e infraestructura\", \"request\": \"Estimados de la muni, Les escribo porque acá en la comunidad estamos preocupados por la situación de nuestros Bomberos. Ellos siempre están al pie del cañón cuando hay incendios, accidentes o cualquier emergencia, pero la verdad es que trabajan con lo justo y muchas veces con menos de lo que necesitan. Hemos sabido que les falta combustible para los carros, lo que complica mucho su trabajo porque a veces no pueden salir rápido a los llamados. Además, la infraestructura del cuartel deja harto que desear: falta equipamiento, herramientas y mejores condiciones para que los voluntarios puedan estar cómodos cuando les toca hacer turnos largos. Sabemos que Bomberos es voluntariado y que ellos hacen rifas y actividades para juntar plata, pero no es suficiente. Creemos que la municipalidad podría darles una mano con apoyo en bencina para los carros y con mejoras en su cuartel. Al final, son ellos los que nos ayudan cuando más lo necesitamos, así que sería bueno devolverles la mano y asegurarnos de que tengan todo lo necesario para seguir haciendo su tremenda labor. Ojalá puedan considerar esta solicitud y darnos alguna respuesta pronto. Desde ya, muchas gracias.\", \"name\": \"Elena Vargas\", \"address\": \"Av. Colón 567, Rancagua\", \"rut\": \"89.012.345-6\", \"phoneNumber\": \"+56 9 8901 2345\", \"signature\": [85, 208, 137, 24, 161, 244, 15, 71, 196, 33, 160, 87, 220, 57, 124, 237]},\n    {\"reason\": \"Seguridad: implementación de cámaras de vigilancia\", \"request\": \"Estimados de la muni, Les escribimos porque en nuestra comunidad la cosa se está poniendo fea con la delincuencia, y ya no nos sentimos seguros ni en nuestras propias casas. En las noches se han visto robos a viviendas, asaltos a vecinos que vuelven tarde del trabajo y hasta autos desmantelados en plena calle. Antes esto no pasaba tanto, pero últimamente se ha puesto peor, y necesitamos hacer algo antes de que la situación se nos vaya de las manos. Por eso, queremos pedirles que nos ayuden con la instalación de cámaras de vigilancia en los sectores más críticos. Sabemos que en otras comunas han puesto cámaras conectadas a la central de seguridad y que eso ha ayudado harto para disuadir a los delincuentes y pillar a los que andan haciendo de las suyas. No estamos pidiendo nada exagerado, solo contar con más herramientas para cuidar a nuestras familias y nuestros barrios. Ojalá puedan tomar en cuenta nuestra solicitud y darnos una solución pronto. La seguridad es un derecho de todos, y con un poco de apoyo podríamos vivir más tranquilos. Quedamos atentos a su respuesta y dispuestos a ayudar en lo que sea necesario. Desde ya, muchas gracias.\", \"name\": \"Mario Silva\", \"address\": \"Los Almendros 6789, Temuco\", \"rut\": \"90.123.456-7\", \"phoneNumber\": \"+56 9 9012 3456\", \"signature\": [119, 40, 115, 192, 243, 71, 138, 225, 69, 204, 36, 171, 94, 231, 60, 127]},\n    {\"reason\": \"Compras de remedios para salud para la gente\", \"request\": \"Estimados de la muni, Les escribo porque en nuestra comunidad hay mucha gente que necesita remedios y no tiene cómo pagarlos. Especialmente los adultos mayores, que con las pensiones bajas que reciben apenas les alcanza para lo justo, y los enfermos crónicos que tienen que tomar remedios todos los días sin falta. Los remedios están carísimos, y hay vecinos que tienen que elegir entre comprar su medicina o comprar comida, lo que no debería pasar. Por eso, queremos pedirles que nos ayuden con alguna solución, ya sea comprando remedios para quienes más lo necesitan o gestionando convenios para que salgan más baratos. Sabemos que en otras comunas han hecho farmacias populares o programas de ayuda, y sería bueno que acá se hiciera algo parecido. No pedimos que lo regalen todo, pero sí que den una mano para que nadie se quede sin su tratamiento por falta de plata. Ojalá puedan considerar nuestra solicitud y darnos una respuesta pronto. La salud es lo más importante, y no podemos dejar que la gente se enferme más por no tener acceso a sus remedios. Quedamos atentos a su respuesta. Desde ya, muchas gracias.\", \"name\": \"Patricia Martínez\", \"address\": \"Calle La Serena 123, La Serena\", \"rut\": \"01.234.567-8\", \"phoneNumber\": \"+56 9 0123 4567\", \"signature\": [76, 201, 130, 17, 154, 237, 2, 64, 189, 26, 153, 80, 213, 50, 117, 230]},\n    {\"reason\": \"Luz publica: mantención de alumbrado publico\", \"request\": \"Estimados de la muni, Les escribimos porque en nuestro sector el alumbrado público anda bien a medias, y la verdad es que ya no podemos seguir así. Hay varias calles donde las luces no prenden o parpadean toda la noche, y otras donde simplemente están malas hace meses. Esto deja todo oscuro y peligroso, porque uno no ve por dónde camina y, lo peor, es que la delincuencia se aprovecha de esto. Ya ha habido robos a casas y asaltos a vecinos que vuelven tarde del trabajo o los cabros que salen del colegio. Por eso, les pedimos que se rajen con la mantención de los focos que están malos y revisen los postes que llevan tiempo sin funcionar. Sabemos que en otros lados han cambiado las luces por unas más modernas y de bajo consumo, así que si eso fuera posible, sería un golazo. No estamos pidiendo nada del otro mundo, solo que nuestras calles tengan la iluminación que corresponde para que podamos caminar tranquilos y sin miedo. Ojalá puedan atender esta solicitud pronto, porque la seguridad y el bienestar de la comunidad dependen en gran parte de que haya buena luz en las calles. Quedamos atentos. Desde ya, muchas gracias.\", \"name\": \"Javier López\", \"address\": \"Av. Los Leones 234, Santiago\", \"rut\": \"12.345.678-9\", \"phoneNumber\": \"+56 9 1234 5678\", \"signature\": [113, 36, 111, 188, 239, 67, 134, 221, 65, 200, 32, 167, 90, 227, 56, 123]},\n    {\"reason\": \"Subvenciones de organizaciones comunitarias y territoriales para financiamiento\", \"request\": \"Estimados de la muni, Les escribimos porque acá en la comunidad hay varias organizaciones que trabajan duro para ayudar a los vecinos, pero la verdad es que sin recursos se hace difícil seguir adelante. Tenemos juntas de vecinos, clubes de adulto mayor, agrupaciones deportivas y comités de seguridad que hacen lo que pueden con rifas y actividades, pero muchas veces no alcanza ni para lo básico. Queremos pedirles que nos apoyen con subvenciones para poder financiar proyectos y seguir funcionando. No estamos hablando de montos gigantes, sino de un apoyo que nos ayude a comprar implementos, hacer mejoras en nuestras sedes, organizar talleres y actividades para los vecinos. Sabemos que en otras comunas han entregado fondos a las organizaciones comunitarias, y nos gustaría que acá también se diera esa oportunidad. Al final, estas agrupaciones ayudan a mejorar la vida en el barrio y a que la gente esté más unida. Ojalá nos puedan considerar en este tipo de apoyos, porque con un pequeño empujón podríamos hacer muchas cosas buenas para la comunidad. Quedamos atentos a su respuesta y dispuestos a hacer los trámites que correspondan. Desde ya, muchas gracias.\", \"name\": \"Camila Fuentes\", \"address\": \"Calle Los Andes 567, Calama\", \"rut\": \"23.456.789-0\", \"phoneNumber\": \"+56 9 2345 6789\", \"signature\": [70, 195, 124, 11, 148, 231, 8, 60, 183, 18, 147, 74, 207, 44, 111, 224]\n},\n    {\"reason\": \"Limpieza de sitios eriazos y áreas verdes, limpieza y mantención\", \"request\": \"Estimados de la muni, Les escribimos porque en nuestro sector hay varios sitios eriazos y áreas verdes que están en completo abandono, llenos de basura, pastizales altos y hasta ratones. La cosa es que esto no solo afea el barrio, sino que también es peligroso. Con el calor, cualquier chispa puede provocar un incendio, y con la oscuridad, estos lugares se han convertido en escondites para delincuentes o gente que anda en cosas raras. Nos gustaría pedirles que se rajen con una limpieza general y que después se haga una mantención más frecuente. No pedimos que dejen todo como plaza de ciudad grande, pero sí que saquen la mugre, corten el pasto y dejen los espacios más seguros y ordenados. Además, si pudieran instalar basureros o alguna señalética para evitar que la gente bote escombros ahí, sería de gran ayuda. Queremos que nuestro barrio esté limpio y sea un lugar seguro para todos, especialmente para los niños y adultos mayores que caminan por ahí. Ojalá puedan tomar en cuenta nuestra solicitud y darnos alguna respuesta pronto. Quedamos atentos y dispuestos a ayudar en lo que se necesite. Desde ya, muchas gracias.\", \"name\": \"Felipe González\", \"address\": \"Calle Las Palmeras 123, Chillán\", \"rut\": \"34.567.890-1\", \"phoneNumber\": \"+56 9 3456 7890\", \"signature\": [127, 42, 117, 194, 245, 73, 140, 227, 71, 206, 38, 173, 96, 233, 62, 129]},\n    {\"reason\": \"Apoyo para actividades masivas de la comunidad\", \"request\": \"Estimados de la muni, Les escribimos porque acá en la comunidad nos gusta hacer actividades donde participe toda la gente, pero muchas veces nos falta apoyo para que salgan bien. Hacemos bingos, campeonatos deportivos, celebraciones de fiestas patrias y navidad para los niños, pero todo lo logramos con rifas y la buena voluntad de los vecinos. La cosa es que cada vez cuesta más juntar plata y sin recursos todo se hace más difícil. Por eso, queremos pedirles que nos den una mano con algunas cosas básicas, como sillas, toldos, amplificación o algún aporte para premios. También sería genial si nos pueden ayudar con permisos y gestiones para usar espacios públicos sin tanta burocracia. Sabemos que en otras comunas apoyan a las organizaciones con estas cosas y nos gustaría que acá también se hiciera algo parecido. Al final, estas actividades no son solo para pasarlo bien, sino que ayudan a fortalecer la comunidad, unir a los vecinos y hacer del barrio un mejor lugar para todos. Ojalá puedan considerar esta solicitud y darnos alguna respuesta pronto. Quedamos atentos y agradecidos de antemano. Desde ya, muchas gracias.\", \"name\": \"Sofía Herrera\", \"address\": \"Av. O'Higgins 9876, San Felipe\", \"rut\": \"45.678.901-2\", \"phoneNumber\": \"+56 9 4567 8901\", \"signature\": [84, 207, 136, 23, 160, 243, 14, 70, 195, 32, 159, 86, 219, 56, 123, 236]},\n    {\"reason\": \"Financiamiento animalistas o organización comunitaria\", \"request\": \"Estimados de la muni, Les escribimos porque en nuestra comunidad hay hartos vecinos que se organizan para ayudar a los animales callejeros y también para mejorar el bienestar de la gente del sector. El problema es que todo lo hacemos con pura voluntad y con lo poco que podemos aportar de nuestro bolsillo, y la verdad es que se hace difícil seguir adelante sin recursos. Los animalistas, por ejemplo, rescatan perritos y gatitos de la calle, los llevan al veterinario, los alimentan y buscan hogares para ellos, pero cada vez hay más casos y los costos son altos. Lo mismo pasa con otras organizaciones comunitarias que hacen ollas comunes, operativos de salud o actividades para los niños, pero que necesitan apoyo para seguir funcionando. Por eso, queremos pedirles que se rajen con algún tipo de financiamiento o subvención para estas agrupaciones, ya sea con recursos directos, insumos o ayuda en la gestión de fondos. Sabemos que en otros lados hay programas de apoyo para organizaciones que trabajan por el bien de la comunidad, y creemos que aquí también se podría hacer algo parecido. Ojalá nos puedan considerar y dar una mano para seguir ayudando. Desde ya, muchas gracias.\", \"name\": \"Jorge Castro\", \"address\": \"Calle La Punta 654, Osorno\", \"rut\": \"56.789.012-3\", \"phoneNumber\": \"+56 9 5678 9012\", \"signature\": [118, 39, 114, 191, 242, 70, 137, 224, 68, 203, 35, 170, 93, 230, 59, 126]}\n]",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8088/mandates",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8088",
-							"path": [
-								"mandates"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Mandates By Status And Department",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8088/mandates?page=0&size=20",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8088",
-							"path": [
-								"mandates"
-							],
-							"query": [
-								{
-									"key": "department",
-									"value": "Departamento de Salud",
-									"description": "If no department and status sent, then all mandates will be retrieved",
-									"disabled": true
-								},
-								{
-									"key": "status",
-									"value": "CREADO",
-									"description": "If no department and status sent, then all mandates will be retrieved",
-									"disabled": true
-								},
-								{
-									"key": "page",
-									"value": "0"
-								},
-								{
-									"key": "size",
-									"value": "20"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Status Mandate",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8088/mandates/67ec619ec878247a45114c1f/status?status=EN_PROCESO",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8088",
-							"path": [
-								"mandates",
-								"67ec619ec878247a45114c1f",
-								"status"
-							],
-							"query": [
-								{
-									"key": "status",
-									"value": "EN_PROCESO"
 								}
 							]
 						}

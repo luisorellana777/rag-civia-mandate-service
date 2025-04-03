@@ -3,6 +3,7 @@ package com.civia.mandate.service.coordinator;
 import com.civia.mandate.dto.MandateDto;
 import com.civia.mandate.dto.HistoryMandateDto;
 import com.civia.mandate.dto.Status;
+import com.civia.mandate.dto.inout.ClusterPageResponse;
 import com.civia.mandate.dto.inout.MandatePageResponse;
 import com.civia.mandate.dto.inout.MandateRequest;
 import com.civia.mandate.dto.PromptDto;
@@ -17,6 +18,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 
 @AllArgsConstructor
 @Component
@@ -36,7 +38,7 @@ public class MandatesService {
         PromptDto promptSummarizationDto = promptCreator.createSummarizationPrompt(mandatesDto);
         mandatesDto = geminiFlashLiteService.getRequestSummarization(promptSummarizationDto, mandatesDto);
 
-        List<HistoryMandateDto> historyMandatesDto = historyMandateRepository.getHistoryByNewMandates(mandatesDto);
+        List<HistoryMandateDto> historyMandatesDto = historyMandateRepository.getSimilarHistoryByNewMandates(mandatesDto);
 
         PromptDto promptInferencePrioritizationDto = promptCreator.createInferencePrioritizationPrompt(historyMandatesDto, mandatesDto);
         mandatesDto = geminiFlashLiteService.getModelRecommendation(promptInferencePrioritizationDto, mandatesDto);
@@ -51,6 +53,17 @@ public class MandatesService {
     }
 
     public MandatePageResponse getMandatesByStateAndDepartment(Status status, String department, int page, int size) {
-        return mandateRepository.getMandates(status, department, page, size);
+        MandatePageResponse mandatesPage = mandateRepository.getMandates(status, department, page, size);
+        List mandatesResponse = mapper.dtoToResponses(mandatesPage.getContent());
+        mandatesPage.setContent(mandatesResponse);
+        return mandatesPage;
+    }
+
+    public ClusterPageResponse getMandatesCluster(String id, Status status, String department, int similarity, int page, int size) {
+        ClusterPageResponse clusterPage = mandateRepository.getCluster(id, status, department, similarity, page, size);
+        if(Objects.isNull(clusterPage)) return null;
+        List mandatesResponse = mapper.dtoToClusterResponses(clusterPage.getContent());
+        clusterPage.setContent(mandatesResponse);
+        return clusterPage;
     }
 }

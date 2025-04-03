@@ -1,6 +1,7 @@
 package com.civia.mandate.mapper;
 
 import com.civia.mandate.dto.MandateDto;
+import com.civia.mandate.dto.inout.ClusterMandateResponse;
 import com.civia.mandate.dto.inout.MandatePageResponse;
 import com.civia.mandate.dto.inout.MandateRequest;
 import com.civia.mandate.dto.inout.MandateResponse;
@@ -9,6 +10,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 
 import java.util.List;
 
@@ -33,12 +36,21 @@ public interface MandateMapper {
 
     List<MandateModel> dtoToModel(List<MandateDto> noExistingMandatesDtos);
 
+    @Mappings({
+            @Mapping(target = "embedding", ignore = true),
+            @Mapping(target = "score", ignore = true)
+    })
+    MandateModel dtoToModel(MandateDto noExistingMandateDto);
+
     List<MandateDto> modelToDto(List<MandateModel> noExistingMandatesDtos);
 
     List<MandateResponse> dtoToResponses(List<MandateDto> savedMandatesDto);
 
+    List<ClusterMandateResponse> dtoToClusterResponses(List<MandateDto> savedMandatesDto);
+
     MandateResponse dtoToResponse(MandateDto savedMandateDto);
 
+    @Mapping(target = "centroidProximity", source = "model.score")
     MandateDto modelToDto(MandateModel model);
 
     @Mappings({
@@ -48,4 +60,13 @@ public interface MandateMapper {
             @Mapping(target = "totalElements", source = "page.totalElements")
     })
     MandatePageResponse pageToPageResponse(Page<MandateModel> page);
+/*
+    @Mappings({
+            @Mapping(target = "totalPages", source = "page.totalPages"),
+            @Mapping(target = "number", source = "page.number"),
+            @Mapping(target = "numberOfElements", source = "page.numberOfElements"),
+            @Mapping(target = "totalElements", source = "page.totalElements")
+    })
+    */
+    MandatePageResponse pageToPageResponse(Pageable page);
 }

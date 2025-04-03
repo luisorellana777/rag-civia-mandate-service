@@ -28,7 +28,7 @@ public class HistoryMandateRepository {
 
     private HistoryMandateMapper mapper;
 
-    public List<HistoryMandateDto> getHistoryByNewMandates(List<MandateDto> mandatesDto) throws JsonProcessingException {
+    public List<HistoryMandateDto> getSimilarHistoryByNewMandates(List<MandateDto> mandatesDto) throws JsonProcessingException {
 
         List<String> newMandatesSummarizationRequests = mandatesDto.stream().map(mandate -> mandate.getRequestSummarization()).toList();
         List<List<Double>> newVectors = geminiFlashLiteService.getModelEmbeddings(newMandatesSummarizationRequests);
