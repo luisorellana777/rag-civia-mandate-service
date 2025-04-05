@@ -30,7 +30,8 @@ public interface MandateMapper {
             @Mapping(target = "department", ignore = true),
             @Mapping(target = "status", ignore = true),
             @Mapping(target = "createdAt", ignore = true),
-            @Mapping(target = "updatedAt", ignore = true)
+            @Mapping(target = "updatedAt", ignore = true),
+            @Mapping(target = "centroidProximity", ignore = true)
     })
     MandateDto requestToDto(MandateRequest request);
 
@@ -60,13 +61,4 @@ public interface MandateMapper {
             @Mapping(target = "totalElements", source = "page.totalElements")
     })
     MandatePageResponse pageToPageResponse(Page<MandateModel> page);
-/*
-    @Mappings({
-            @Mapping(target = "totalPages", source = "page.totalPages"),
-            @Mapping(target = "number", source = "page.number"),
-            @Mapping(target = "numberOfElements", source = "page.numberOfElements"),
-            @Mapping(target = "totalElements", source = "page.totalElements")
-    })
-    */
-    MandatePageResponse pageToPageResponse(Pageable page);
 }

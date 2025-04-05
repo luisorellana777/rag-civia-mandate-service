@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder=true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Document(collection = "history_mandates")
 public class HistoryMandateModel {

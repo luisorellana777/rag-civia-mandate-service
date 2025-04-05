@@ -1,9 +1,11 @@
 package com.civia.mandate.dto.inout;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-@Data
+@Getter
+@Setter
 @SuperBuilder
 public class ClusterMandateResponse extends MandateResponse{
 

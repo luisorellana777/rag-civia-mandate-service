@@ -1,5 +1,6 @@
 package com.civia.mandate.controller.advise;
 
+import com.civia.mandate.exception.HistorySaveException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,5 +16,11 @@ public class ValidationExceptionHandler {
     public ResponseEntity<String> handleHandlerMethodValidationException(HandlerMethodValidationException ex) {
 
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(HistorySaveException.class)
+    public ResponseEntity<String> handleValidationException(HistorySaveException ex) {
+
+        return new ResponseEntity<>(ex.getMessages(), HttpStatus.BAD_REQUEST);
     }
 }

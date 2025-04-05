@@ -9,12 +9,12 @@ import lombok.EqualsAndHashCode;
 @Data
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class MandateHistoryRequest {
+public class MandateExistingHistoryRequest {
 
-    @NotNull(message = "Description cannot be null")
-    @Size(min = 4, message = "Description is required")
+    @NotNull(message = "Id cannot be null")
+    @Size(min = 4, message = "Id is required")
     @EqualsAndHashCode.Include
-    private String description;
+    private String id;
 
     @NotNull(message = "Cost cannot be null")
     @Size(min = 1, message = "Cost is required")
