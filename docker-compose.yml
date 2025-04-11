@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   rag-civia-mandate-service:
     image: luisorellanaa/rag-civia-mandate-service:0.3.0-SNAPSHOT
