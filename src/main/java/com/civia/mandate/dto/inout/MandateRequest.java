@@ -11,8 +11,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class MandateRequest {
 
-    @NotNull(message = "Name cannot be null")
-    @Size(min = 2, message = "Name is required")
     private String name;
 
     @NotNull(message = "Address cannot be null")
@@ -27,14 +25,11 @@ public class MandateRequest {
 
     private String observation;
 
-    @NotNull(message = "Signature cannot be null")
     private byte[] signature;
 
     @NotNull(message = "Rut cannot be null")
     @Size(min = 5, max=14, message = "Rut is required")
     private String rut;
 
-    @NotNull(message = "Phone Number cannot be null")
-    @Size(min = 8, message = "Phone Number is required")
     private String phoneNumber;
 }

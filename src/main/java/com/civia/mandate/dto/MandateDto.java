@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder(toBuilder=true)
@@ -43,6 +44,10 @@ public class MandateDto {
 
     private String department;
 
+    private Boolean fieldWork;
+
+    private Location location;
+
     private Status status;
 
     private Float centroidProximity;
@@ -52,4 +57,13 @@ public class MandateDto {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime updatedAt;
+
+    @Data
+    @Builder(toBuilder=true)
+    public static class Location {
+
+        private String type;
+
+        private List<Double> coordinates;
+    }
 }

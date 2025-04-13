@@ -8,6 +8,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @SuperBuilder
@@ -46,6 +47,10 @@ public class MandateResponse {
 
     protected String department;
 
+    private Boolean fieldWork;
+
+    private Location location;
+
     protected Status status;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
@@ -53,4 +58,11 @@ public class MandateResponse {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
     protected LocalDateTime updatedAt;
+
+    @Data
+    @Builder(toBuilder=true)
+    public static class Location {
+
+        private List<Double> coordinates;
+    }
 }

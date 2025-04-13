@@ -3,15 +3,12 @@ package com.civia.mandate.repository;
 import com.civia.mandate.dto.MandateDto;
 import com.civia.mandate.dto.Status;
 import com.civia.mandate.dto.inout.ClusterPageResponse;
-import com.civia.mandate.dto.inout.MandateHistoryResponse;
 import com.civia.mandate.dto.inout.MandatePageResponse;
-import com.civia.mandate.dto.inout.MandateResponse;
 import com.civia.mandate.mapper.MandateMapper;
-import com.civia.mandate.repository.model.HistoryMandateModel;
 import com.civia.mandate.repository.model.MandateModel;
 import com.civia.mandate.service.gemini.client.GeminiFlashLiteService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,14 +21,28 @@ import java.util.Objects;
 import java.util.stream.IntStream;
 
 @Repository
-@AllArgsConstructor
 public class MandateRepository {
 
     private GeminiFlashLiteService geminiFlashLiteService;
 
     private MandateModelRepository mandateModelRepository;
 
+    private NonFieldWorkClusterRepository nonFieldWorkClusterRepository;
+
+    private FieldWorkClusterRepository fieldWorkClusterRepository;
+
     private MandateMapper mapper;
+
+    @Value("${cluster.similarity-threshold:50}")
+    private Integer similarityThreshold;
+
+    public MandateRepository(GeminiFlashLiteService geminiFlashLiteService, MandateModelRepository mandateModelRepository, NonFieldWorkClusterRepository nonFieldWorkClusterRepository, FieldWorkClusterRepository fieldWorkClusterRepository, MandateMapper mapper) {
+        this.geminiFlashLiteService = geminiFlashLiteService;
+        this.mandateModelRepository = mandateModelRepository;
+        this.nonFieldWorkClusterRepository = nonFieldWorkClusterRepository;
+        this.fieldWorkClusterRepository = fieldWorkClusterRepository;
+        this.mapper = mapper;
+    }
 
     public List<MandateDto> saveNewMandates(List<MandateDto> mandateDtos) throws JsonProcessingException {
 
@@ -101,7 +112,7 @@ public class MandateRepository {
         return mandatePageResponse;
     }
 
-    public ClusterPageResponse getCluster(String id, Status status, String department, int similarity, int page, int size) {
+    public ClusterPageResponse getCluster(String id, Status status, String department, int kilometers, int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size);
 
@@ -110,30 +121,47 @@ public class MandateRepository {
 
         List<Double> embeddedCentroid = mandateModel.getEmbedding();
 
-        Slice<MandateModel> mandateCluster;
-
         boolean noDepartment = Objects.isNull(department) || department.isEmpty() || department.isBlank();
 
-        float centroidProximityScore = (float) similarity / 100;
+        Double latitude = Objects.nonNull(mandateModel.getLocation()) ? mandateModel.getLocation().getCoordinates().get(0) : null;
+        Double longitude = Objects.nonNull(mandateModel.getLocation()) ? mandateModel.getLocation().getCoordinates().get(1) : null;
 
-        if(Objects.isNull(status) && noDepartment){
+        boolean isFieldWork = Objects.nonNull(latitude) && Objects.nonNull(longitude) && Objects.nonNull(mandateModel.getFieldWork()) && mandateModel.getFieldWork() && kilometers > 0;
 
-            mandateCluster = mandateModelRepository.vectorSearchAll(embeddedCentroid, id, centroidProximityScore, pageable);
-
-        }else if (Objects.nonNull(status) && noDepartment){
-
-            mandateCluster = mandateModelRepository.vectorSearchByStatus(embeddedCentroid, id, centroidProximityScore, status, pageable);
-
-        }else if(Objects.isNull(status)){
-
-            mandateCluster = mandateModelRepository.vectorSearchByDepartment(embeddedCentroid, id, centroidProximityScore, department, pageable);
-
-        }else{
-
-            mandateCluster = mandateModelRepository.vectorSearchByStatusAndDepartment(embeddedCentroid, id, centroidProximityScore, status, department, pageable);
-        }
+        Slice<MandateModel> mandateCluster = getClusterByFieldWork(isFieldWork, id, status, department, noDepartment,  embeddedCentroid, kilometers, latitude, longitude, pageable);
 
         List<MandateDto> mandateResponses = mandateCluster.stream().map(mapper::modelToDto).toList();
         return ClusterPageResponse.builder().hasNext(mandateCluster.hasNext()).content(mandateResponses).build();
+    }
+
+    private Slice<MandateModel> getClusterByFieldWork(boolean isFieldWork, String id, Status status, String department, boolean noDepartment, List<Double> embeddedCentroVector,  int kilometers, Double latitude, Double longitude, Pageable pageable){
+
+        float centroidProximityScore = (float) similarityThreshold / 100;
+        int metersProximity = kilometers * 1000;
+
+        if(Objects.isNull(status) && noDepartment){
+
+            return isFieldWork ?
+                    fieldWorkClusterRepository.vectorSearchAll(embeddedCentroVector, latitude, longitude, metersProximity, id, centroidProximityScore, pageable) :
+                    nonFieldWorkClusterRepository.vectorSearchAll(embeddedCentroVector, id, centroidProximityScore, pageable);
+
+        }else if (Objects.nonNull(status) && noDepartment){
+
+            return isFieldWork ?
+                    fieldWorkClusterRepository.vectorSearchByStatus(embeddedCentroVector, latitude, longitude, metersProximity, id, centroidProximityScore, status, pageable) :
+                    nonFieldWorkClusterRepository.vectorSearchByStatus(embeddedCentroVector, id, centroidProximityScore, status, pageable);
+
+        }else if(Objects.isNull(status)){
+
+            return isFieldWork ?
+                    fieldWorkClusterRepository.vectorSearchByDepartment(embeddedCentroVector, latitude, longitude, metersProximity, id, centroidProximityScore, department, pageable) :
+                    nonFieldWorkClusterRepository.vectorSearchByDepartment(embeddedCentroVector, id, centroidProximityScore, department, pageable);
+
+        }else{
+
+            return isFieldWork ?
+                    fieldWorkClusterRepository.vectorSearchByStatusAndDepartment(embeddedCentroVector, latitude, longitude, metersProximity, id, centroidProximityScore, status, department, pageable) :
+                    nonFieldWorkClusterRepository.vectorSearchByStatusAndDepartment(embeddedCentroVector, id, centroidProximityScore, status, department, pageable);
+        }
     }
 }

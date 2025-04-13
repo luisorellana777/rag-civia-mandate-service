@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class GeminiClientConfig {
 
     private static final String BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models";
-    @Value("${GEMINI-KEY}")
+    @Value("${GEMINI_KEY}")
     private String geminiKey;
 
     @Bean

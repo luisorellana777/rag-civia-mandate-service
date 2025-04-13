@@ -1,0 +1,34 @@
+db.mandates.createIndex({ location: "2dsphere" });
+
+db.collection.createSearchIndex({
+  name: "vector_index",
+  definition: {
+    "fields": [
+      {
+        "type": "vector",
+        "path": "embedding",
+        "numDimensions": 768,
+        "similarity": "cosine"
+      }
+    ]
+  }
+});
+
+db.collection.createSearchIndex({
+  name: "vector_geo_index",
+  definition: {
+    "mappings": {
+      "dynamic": false,
+      "fields": {
+        "embedding": {
+          "type": "knnVector",
+          "dimensions": 768,
+          "similarity": "cosine"
+        },
+        "location": {
+          "type": "geo"
+        }
+      }
+    }
+  }
+});

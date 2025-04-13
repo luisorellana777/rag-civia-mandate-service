@@ -11,7 +11,8 @@ class RagCiviaMandateServiceApplicationTests {
 		System.setProperty("DB_KEY", "KEY");
 		System.setProperty("DB_USER", "KEY");
 		System.setProperty("DB_NAME", "KEY");
-		System.setProperty("GEMINI-KEY", "KEY");
+		System.setProperty("GEMINI_KEY", "KEY");
+		System.setProperty("OPENCAGE_KEY", "KEY");
 	}
 	@Test
 	void contextLoads() {

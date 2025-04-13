@@ -24,7 +24,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\"request\": \"me llamo juanita perez y soy del sector de la paloma. me gustaria que el alcalde me ayude con unos pizarreños para no lloverme este invierno ya que el invierno pasado se mojaron mis pertenencias de valor y perdi hasta una cocina a gas porque le entro mucha agua. espero este año las lluvias no sean tan grandes para que no me afecte tanto pero tambien debo ser precabida y prepararme antes que suceda. es por eso sr alcalde que le quiero pedir esta ayda tan importante para mi y para quiens vivimos en esta casa ya que tambien vive conmigo mi mama adulta mayor que se encuentra prostrada y no puede pasar un mal invierno porqe tamben toam muchso medicamentos. mi rut es 11.234.765-9 vivio en sector la paloma y mi telefono 987652323\", \"name\": \"Juana Pérez\", \"address\": \"Av. Libertador Bernardo O'Higgins 1234, Santiago\", \"rut\": \"11.234.765-9\", \"phoneNumber\": \"+56 9 87652323\", \"signature\": [102, 23, 89, 156, 210, 45, 112, 187, 78, 241, 98, 167, 34, 203, 67, 134]}\n]",
+							"raw": "[\n    {\"request\": \"me llamo pedrita pedraza y soy del sector de la chimba. me gustaria que el alcalde me ayude con unos pizarreños para no lloverme este invierno ya que el invierno pasado se mojaron mis pertenencias de valor y perdi hasta una cocina a gas porque le entro mucha agua. espero este año las lluvias no sean tan grandes para que no me afecte tanto pero tambien debo ser precabida y prepararme antes que suceda. es por eso sr alcalde que le quiero pedir esta ayda tan importante para mi y para quiens vivimos en esta casa ya que tambien vive conmigo mi mama adulta mayor que se encuentra prostrada y no puede pasar un mal invierno porqe tamben toam muchso medicamentos. mi rut es 11.234.765-9 vivio en sector la paloma y mi telefono 987652323\", \"name\": \"pedrita pedraza\", \"address\": \"Av. Libertador Bernardo O'Higgins 1235, Santiago\", \"rut\": \"12.234.765-9\", \"phoneNumber\": \"+56 9 89652323\", \"signature\": [102, 23, 89, 156, 210, 45, 112, 187, 78, 241, 98, 167, 34, 203, 67, 134]}\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -71,7 +71,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8088/mandates?page=0&size=20",
+							"raw": "http://localhost:8088/mandates?page=0&size=40",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -99,7 +99,7 @@
 								},
 								{
 									"key": "size",
-									"value": "20"
+									"value": "40"
 								}
 							]
 						}
@@ -132,7 +132,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8088/mandates/67ef41b9166ef766c89a059b/cluster?similarity=76&size=5&page=0",
+							"raw": "http://localhost:8088/mandates/67fb068ad99f3f33f896e9b3/cluster?kilometers=50&size=10&page=0",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -140,13 +140,13 @@
 							"port": "8088",
 							"path": [
 								"mandates",
-								"67ef41b9166ef766c89a059b",
+								"67fb068ad99f3f33f896e9b3",
 								"cluster"
 							],
 							"query": [
 								{
 									"key": "department",
-									"value": "Departamento de Seguridad Ciudadana",
+									"value": "Departamento Social",
 									"description": "If no department and status sent, then all mandates will be retrieved",
 									"disabled": true
 								},
@@ -157,12 +157,12 @@
 									"disabled": true
 								},
 								{
-									"key": "similarity",
-									"value": "76"
+									"key": "kilometers",
+									"value": "50"
 								},
 								{
 									"key": "size",
-									"value": "5"
+									"value": "10"
 								},
 								{
 									"key": "page",

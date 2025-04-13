@@ -10,6 +10,7 @@ import com.civia.mandate.dto.PromptDto;
 import com.civia.mandate.dto.inout.MandateResponse;
 import com.civia.mandate.mapper.MandateMapper;
 import com.civia.mandate.repository.MandateRepository;
+import com.civia.mandate.service.geocoder.GeocoderService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.civia.mandate.repository.HistoryMandateRepository;
 import com.civia.mandate.service.gemini.client.GeminiFlashLiteService;
@@ -28,6 +29,8 @@ public class MandatesService {
     private PromptCreator promptCreator;
     private HistoryMandateRepository historyMandateRepository;
     private MandateRepository mandateRepository;
+
+    private GeocoderService geocoderService;
     private MandateMapper mapper;
 
     public List<MandateResponse> saveNewMandate(List<MandateRequest> newMandatesRequest) throws JsonProcessingException {
@@ -42,6 +45,8 @@ public class MandatesService {
 
         PromptDto promptInferencePrioritizationDto = promptCreator.createInferencePrioritizationPrompt(historyMandatesDto, mandatesDto);
         mandatesDto = geminiFlashLiteService.getModelRecommendation(promptInferencePrioritizationDto, mandatesDto);
+
+        mandatesDto = geocoderService.getCoordinates(mandatesDto);
 
         List<MandateDto> savedMandatesDto = mandateRepository.saveNewMandates(mandatesDto);
         return mapper.dtoToResponses(savedMandatesDto);
@@ -59,8 +64,8 @@ public class MandatesService {
         return mandatesPage;
     }
 
-    public ClusterPageResponse getMandatesCluster(String id, Status status, String department, int similarity, int page, int size) {
-        ClusterPageResponse clusterPage = mandateRepository.getCluster(id, status, department, similarity, page, size);
+    public ClusterPageResponse getMandatesCluster(String id, Status status, String department, int kilometers, int page, int size) {
+        ClusterPageResponse clusterPage = mandateRepository.getCluster(id, status, department, kilometers, page, size);
         if(Objects.isNull(clusterPage)) return null;
         List mandatesResponse = mapper.dtoToClusterResponses(clusterPage.getContent());
         clusterPage.setContent(mandatesResponse);

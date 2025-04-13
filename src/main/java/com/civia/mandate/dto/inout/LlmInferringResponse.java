@@ -24,13 +24,16 @@ public class LlmInferringResponse {
 
     private String department;
 
+    private Boolean fieldWork;
+
     @JsonCreator
-    public LlmInferringResponse(@JsonProperty("request") String request, @JsonProperty("inferredCost") String inferredCost, @JsonProperty("inferredBenefit") String inferredBenefit, @JsonProperty("priority") String priority, @JsonProperty("explanation") String explanation, @JsonProperty("department") String department) {
+    public LlmInferringResponse(@JsonProperty("request") String request, @JsonProperty("inferredCost") String inferredCost, @JsonProperty("inferredBenefit") String inferredBenefit, @JsonProperty("priority") String priority, @JsonProperty("explanation") String explanation, @JsonProperty("department") String department, @JsonProperty("fieldWork") Boolean fieldWork) {
         this.request = request;
         this.inferredCost = inferredCost;
         this.inferredBenefit = inferredBenefit;
         this.priority = priority;
         this.explanation = explanation;
         this.department = department;
+        this.fieldWork = fieldWork;
     }
 }

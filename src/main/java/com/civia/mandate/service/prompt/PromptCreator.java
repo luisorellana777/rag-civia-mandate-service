@@ -4,7 +4,6 @@ package com.civia.mandate.service.prompt;
 import com.civia.mandate.dto.HistoryMandateDto;
 import com.civia.mandate.dto.MandateDto;
 import com.civia.mandate.dto.PromptDto;
-import com.civia.mandate.dto.inout.MandateRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

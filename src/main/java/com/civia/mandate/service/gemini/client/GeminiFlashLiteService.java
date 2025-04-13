@@ -57,6 +57,7 @@ public class GeminiFlashLiteService {
             mandateDto.setPriority(llmMandate.getPriority());
             mandateDto.setExplanation(llmMandate.getExplanation());
             mandateDto.setDepartment(llmMandate.getDepartment());
+            mandateDto.setFieldWork(llmMandate.getFieldWork());
             return mandateDto;
         }).toList();
     }

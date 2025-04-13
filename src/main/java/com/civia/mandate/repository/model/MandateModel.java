@@ -48,6 +48,10 @@ public class MandateModel {
 
     private String department;
 
+    private Boolean fieldWork;
+
+    private Location location;
+
     private Status status;
 
     private List<Double> embedding;
@@ -57,4 +61,13 @@ public class MandateModel {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    @Data
+    @Builder(toBuilder=true)
+    public static class Location {
+
+        private String type;
+
+        private List<Double> coordinates;
+    }
 }

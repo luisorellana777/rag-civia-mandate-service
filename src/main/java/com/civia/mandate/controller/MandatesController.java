@@ -44,9 +44,9 @@ public class MandatesController {
     }
 
     @GetMapping("/{id}/cluster")
-    public ResponseEntity<ClusterPageResponse> getMandatesCluster(@PathVariable String id, @RequestParam(name = "status", required = false) Status status, @RequestParam(name = "department", required = false) String department, @RequestParam(name = "similarity") int similarity, @RequestParam(defaultValue = "0") int page,
+    public ResponseEntity<ClusterPageResponse> getMandatesCluster(@PathVariable String id, @RequestParam(name = "status", required = false) Status status, @RequestParam(name = "department", required = false) String department, @RequestParam(name = "kilometers", required = false, defaultValue = "0") int kilometers, @RequestParam(defaultValue = "0") int page,
                                                                                @RequestParam(defaultValue = "10") int size) throws JsonProcessingException {
-        ClusterPageResponse pagesMandates = service.getMandatesCluster(id, status, department, similarity, page, size);
+        ClusterPageResponse pagesMandates = service.getMandatesCluster(id, status, department, kilometers, page, size);
         return new ResponseEntity<>(pagesMandates, Objects.nonNull(pagesMandates) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 }
