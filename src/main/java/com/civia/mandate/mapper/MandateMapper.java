@@ -31,7 +31,9 @@ public interface MandateMapper {
             @Mapping(target = "status", ignore = true),
             @Mapping(target = "createdAt", ignore = true),
             @Mapping(target = "updatedAt", ignore = true),
-            @Mapping(target = "centroidProximity", ignore = true)
+            @Mapping(target = "centroidProximity", ignore = true),
+            @Mapping(target = "fieldWork", ignore = true),
+            @Mapping(target = "location", ignore = true)
     })
     MandateDto requestToDto(MandateRequest request);
 
