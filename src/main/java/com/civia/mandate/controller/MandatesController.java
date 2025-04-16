@@ -24,8 +24,10 @@ public class MandatesController {
     private MandatesService service;
 
     @PostMapping
-    public List<MandateResponse> savePrioritize(@Valid @RequestBody List<MandateRequest> newMandateRequest) throws JsonProcessingException {
-        return service.saveNewMandate(newMandateRequest);
+    public ResponseEntity<List<MandateResponse>> savePrioritize(@Valid @RequestBody List<MandateRequest> newMandateRequest) throws JsonProcessingException {
+        List<MandateResponse> mandateResponses = service.saveNewMandate(newMandateRequest);
+        HttpStatus statusResult = !mandateResponses.isEmpty() ? HttpStatus.OK : HttpStatus.ALREADY_REPORTED;
+        return new ResponseEntity<>(mandateResponses, statusResult);
     }
 
     @PutMapping("/{id}/status")
