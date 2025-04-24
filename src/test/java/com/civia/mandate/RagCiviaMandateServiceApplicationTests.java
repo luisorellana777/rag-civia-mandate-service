@@ -13,6 +13,8 @@ class RagCiviaMandateServiceApplicationTests {
 		System.setProperty("DB_NAME", "KEY");
 		System.setProperty("GEMINI_KEY", "KEY");
 		System.setProperty("OPENCAGE_KEY", "KEY");
+		System.setProperty("FIREBASE_JSON_PATH", "firebase-service-account.json");
+		System.setProperty("FIREBASE_API_KEY", "KEY");
 	}
 	@Test
 	void contextLoads() {

@@ -22,3 +22,9 @@ integration:
       Debes incluir informacion clave como fechas, direcciones, montos monetarios, numeros, cantidades y nombres. Los resumenes deben corresponder exactamente a las mismas tareas que el usuario ha ingresado en el mismo order que fueron ingresadas sin incluir signos como *. Solo responde en formato JSON utilizando el siguiente formato: \n
       Resumen = {\"requestSummarization\": str}
       Return: list[Resumen]"
+firebase:
+  api:
+    key: ${FIREBASE_API_KEY}
+  service:
+    account:
+      file: ${FIREBASE_JSON_PATH}

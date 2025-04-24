@@ -1,6 +1,6 @@
 services:
   rag-civia-mandate-service:
-    image: luisorellanaa/rag-civia-mandate-service:0.4.1-SNAPSHOT
+    image: luisorellanaa/rag-civia-mandate-service:0.5.0-SNAPSHOT
     ports:
       - "8088:8088"
     restart: always
@@ -11,3 +11,4 @@ services:
       DB_NAME: ""
       GEMINI_KEY: ""
       OPENCAGE_KEY: ""
+      FIREBASE_JSON_PATH: ""

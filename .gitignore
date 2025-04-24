@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+firebase-service-account.json
+postman/DEV.postman_environment.json

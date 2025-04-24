@@ -13,7 +13,14 @@
 					"name": "Save New Mandates",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [
@@ -24,7 +31,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\"request\": \"me llamo pedrita pedraza y soy del sector de la chimba. me gustaria que el alcalde me ayude con unos pizarreños para no lloverme este invierno ya que el invierno pasado se mojaron mis pertenencias de valor y perdi hasta una cocina a gas porque le entro mucha agua. espero este año las lluvias no sean tan grandes para que no me afecte tanto pero tambien debo ser precabida y prepararme antes que suceda. es por eso sr alcalde que le quiero pedir esta ayda tan importante para mi y para quiens vivimos en esta casa ya que tambien vive conmigo mi mama adulta mayor que se encuentra prostrada y no puede pasar un mal invierno porqe tamben toam muchso medicamentos. mi rut es 11.234.765-9 vivio en sector la paloma y mi telefono 987652323\", \"name\": \"pedrita pedraza\", \"address\": \"Av. Libertador Bernardo O'Higgins 1235, Santiago\", \"rut\": \"12.234.765-9\", \"phoneNumber\": \"+56 9 89652323\", \"signature\": [102, 23, 89, 156, 210, 45, 112, 187, 78, 241, 98, 167, 34, 203, 67, 134]}\n]",
+							"raw": "[\n{\"request\": \"Mi nombre es María del Carmen Ramírez y resido en el barrio Los Olivos. Me dirijo a usted porque, tras el desastroso invierno pasado, mi techo presentó goteras que arruinaron mis pertenencias —entre ellas una estufa eléctrica y ropa de valor—, y temo que esta temporada lluviosa repita la misma situación. Vivo bajo el mismo techo con mi abuela, doña Carmen, de 82 años, cuya salud frágil y numerosos medicamentos no soportarían otra humedecida prolongada. Por ello le suplico su colaboración para proporcionarnos pizarreños y reforzar nuestra cubierta antes de que empiecen las lluvias. Agradezco de antemano su comprensión y quedo a la espera de su pronta respuesta.\", \"name\": \"Maria del Carmen\", \"address\": \"C. Desolación, 852 San Fernando, Chile\", \"rut\": \"12.345.678-9\", \"phoneNumber\": \"+56 9 5672 5678\", \"signature\": [102, 23, 89, 156, 210, 45, 112, 187, 78, 241, 98, 167, 34, 203, 67, 134]},\n{\"request\": \"me llamo juanita perez y soy del sector de la paloma. me gustaria que el alcalde me ayude con unos pizarreños para no lloverme este invierno ya que el invierno pasado se mojaron mis pertenencias de valor y perdi hasta una cocina a gas porque le entro mucha agua. espero este año las lluvias no sean tan grandes para que no me afecte tanto pero tambien debo ser precabida y prepararme antes que suceda. es por eso sr alcalde que le quiero pedir esta ayda tan importante para mi y para quiens vivimos en esta casa ya que tambien vive conmigo mi mama adulta mayor que se encuentra prostrada y no puede pasar un mal invierno porqe tamben toam muchso medicamentos.\", \"name\": \"Juana Pérez\", \"address\": \"Av. Uno 829 San Fernando, Chile\", \"rut\": \"16.645.678-9\", \"phoneNumber\": \"+56 9 1234 5678\", \"signature\": [102, 23, 89, 156, 210, 45, 112, 187, 78, 241, 98, 167, 34, 203, 67, 134]}\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -52,7 +59,14 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -113,7 +127,14 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -132,7 +153,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8088/mandates/67fb068ad99f3f33f896e9b3/cluster?kilometers=50&size=10&page=0",
+							"raw": "http://localhost:8088/mandates/6809be8bdec6ba4c712a8668/cluster?department=Departamento Social&kilometers=2&size=10&page=0",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -140,15 +161,14 @@
 							"port": "8088",
 							"path": [
 								"mandates",
-								"67fb068ad99f3f33f896e9b3",
+								"6809be8bdec6ba4c712a8668",
 								"cluster"
 							],
 							"query": [
 								{
 									"key": "department",
 									"value": "Departamento Social",
-									"description": "If no department and status sent, then all mandates will be retrieved",
-									"disabled": true
+									"description": "If no department and status sent, then all mandates will be retrieved"
 								},
 								{
 									"key": "status",
@@ -158,7 +178,7 @@
 								},
 								{
 									"key": "kilometers",
-									"value": "50"
+									"value": "2"
 								},
 								{
 									"key": "size",
@@ -177,7 +197,14 @@
 					"name": "Update Status Mandate",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "PUT",
 						"header": [
@@ -226,7 +253,14 @@
 					"name": "Feedback New Historic Mandates",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [
@@ -264,7 +298,14 @@
 					"name": "Feedback Existing Mandates",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "POST",
 						"header": [
@@ -305,7 +346,14 @@
 					},
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -349,6 +397,112 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{USER_EMAIL}}\",\n    \"password\": \"{{USER_PASSWORD}}\",\n    \"displayName\": \"{{USER_NAME}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Firebase Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"var token = jsonData.idToken || jsonData.token || jsonData.access_token;",
+							"",
+							"if (token) {",
+							"    pm.environment.set(\"AUTH_TOKEN\", token);",
+							"    console.log(\"Saved auth_token:\", token);",
+							"} else {",
+							"    console.warn(\"Token not found in response:\", jsonData);",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"{{USER_EMAIL}}\",\n    \"password\": \"{{USER_PASSWORD}}\",\n    \"returnSecureToken\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{FIREBASE_KEY}}\n",
+					"protocol": "https",
+					"host": [
+						"identitytoolkit",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v1",
+						"accounts:signInWithPassword"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{FIREBASE_KEY}}\n"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]\n' \\\n--header 'content-type: application/json' \\\n--data-raw '{\n    \"email\": \"[EMAIL]\",\n    \"password\": \"[PASSWORD]\",\n    \"returnSecureToken\": true\n}'"
+			},
+			"response": []
 		}
 	]
 }
