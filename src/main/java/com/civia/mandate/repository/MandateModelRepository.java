@@ -11,7 +11,6 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.Update;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 public interface MandateModelRepository extends MongoRepository<MandateModel, String> {

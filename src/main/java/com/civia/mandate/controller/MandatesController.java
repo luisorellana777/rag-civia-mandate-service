@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class MandatesController {
     private MandatesService service;
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMINISTRATOR', 'OFFICER', 'CLERK')")
     public ResponseEntity<List<MandateResponse>> savePrioritize(@Valid @RequestBody List<MandateRequest> newMandateRequest) throws JsonProcessingException {
         List<MandateResponse> mandateResponses = service.saveNewMandate(newMandateRequest);
         HttpStatus statusResult = !mandateResponses.isEmpty() ? HttpStatus.OK : HttpStatus.ALREADY_REPORTED;
@@ -31,6 +33,7 @@ public class MandatesController {
     }
 
     @PutMapping("/{id}/status")
+    @PreAuthorize("hasAnyRole('ADMINISTRATOR', 'OFFICER', 'INSPECTOR')")
     public ResponseEntity<MandateResponse> updateMandateState(@PathVariable String id, @RequestParam Status status) throws JsonProcessingException {
         MandateResponse updatedMandate = service.updateMandateState(id, status);
         HttpStatus statusResult = Objects.nonNull(updatedMandate.getId()) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
@@ -39,6 +42,7 @@ public class MandatesController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMINISTRATOR', 'OFFICER', 'INSPECTOR')")
     public ResponseEntity<MandatePageResponse> getMandatesByStateAndDepartment(@RequestParam(name = "status", required = false) Status status, @RequestParam(name = "department", required = false) String department, @RequestParam(defaultValue = "0") int page,
                                                                     @RequestParam(defaultValue = "10") int size) throws JsonProcessingException {
         MandatePageResponse pagesMandates = service.getMandatesByStateAndDepartment(status, department, page, size);
@@ -46,6 +50,7 @@ public class MandatesController {
     }
 
     @GetMapping("/{id}/cluster")
+    @PreAuthorize("hasAnyRole('ADMINISTRATOR', 'OFFICER')")
     public ResponseEntity<ClusterPageResponse> getMandatesCluster(@PathVariable String id, @RequestParam(name = "status", required = false) Status status, @RequestParam(name = "department", required = false) String department, @RequestParam(name = "kilometers", required = false, defaultValue = "0") int kilometers, @RequestParam(defaultValue = "0") int page,
                                                                                @RequestParam(defaultValue = "10") int size) throws JsonProcessingException {
         ClusterPageResponse pagesMandates = service.getMandatesCluster(id, status, department, kilometers, page, size);

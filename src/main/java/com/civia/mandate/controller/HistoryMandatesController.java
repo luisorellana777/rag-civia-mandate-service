@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class HistoryMandatesController {
     private HistoryMandateService service;
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMINISTRATOR', 'OFFICER')")
     public ResponseEntity<MandatePageResponse> getHistoryMandates(@RequestParam(defaultValue = "0") int page,
                                                            @RequestParam(defaultValue = "10") int size) throws JsonProcessingException {
 
@@ -29,6 +31,7 @@ public class HistoryMandatesController {
     }
 
     @PostMapping("/new")
+    @PreAuthorize("hasAnyRole('ADMINISTRATOR', 'OFFICER')")
     public ResponseEntity saveNewHistoryMandates(@Valid @RequestBody List<MandateNewHistoryRequest> historyMandateRequest) throws JsonProcessingException {
 
         service.saveNewMandates(historyMandateRequest);
@@ -36,6 +39,7 @@ public class HistoryMandatesController {
     }
 
     @PostMapping("/from-existing")
+    @PreAuthorize("hasAnyRole('ADMINISTRATOR', 'OFFICER')")
     public ResponseEntity saveExistingHistoryMandates(@Valid @RequestBody List<MandateExistingHistoryRequest> historyMandateRequest) throws JsonProcessingException {
 
         service.saveExistingMandates(historyMandateRequest);

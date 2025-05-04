@@ -418,7 +418,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{USER_EMAIL}}\",\n    \"password\": \"{{USER_PASSWORD}}\",\n    \"displayName\": \"{{USER_NAME}}\"\n}",
+							"raw": "{\n    \"email\": \"{{USER_EMAIL}}\",\n    \"password\": \"{{USER_PASSWORD}}\",\n    \"displayName\": \"{{USER_NAME}}\",\n    \"role\": \"{{USER_ROLE}}\",\n    \"department\": \"{{USER_DEPARTMENT}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

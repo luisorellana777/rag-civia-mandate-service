@@ -1,13 +1,15 @@
 package com.civia.mandate.controller;
 
+import com.civia.mandate.dto.inout.UserRequest;
+import com.civia.mandate.dto.inout.UserResponse;
 import com.civia.mandate.service.user.UserService;
-import com.google.firebase.auth.UserRecord;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Objects;
 
 @RestController
 @AllArgsConstructor
@@ -16,14 +18,25 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/users")
-    public ResponseEntity<UserRecord> createUser(@RequestBody CreateUserRequest request) {
+    @PreAuthorize("hasAnyRole('ADMINISTRATOR')")
+    public ResponseEntity<Boolean> createUser(@RequestBody UserRequest request) {
+        boolean isUserCreated = false;
         try {
-            UserRecord userRecord = userService.createUser(request.email(), request.password(), request.displayName());
-            return new ResponseEntity<>(userRecord, HttpStatus.CREATED);
+            isUserCreated = userService.createUser(request);
+            return new ResponseEntity<>(isUserCreated, isUserCreated ? HttpStatus.CREATED : HttpStatus.ALREADY_REPORTED);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(isUserCreated, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/users")
+    @PreAuthorize("hasAnyRole('ADMINISTRATOR', 'OFFICER', 'CLERK', 'INSPECTOR')")
+    public ResponseEntity<UserResponse> getUser(@RequestHeader("Authorization") String token) {
+        try {
+            UserResponse userResponse = userService.getUser(token);
+            return new ResponseEntity<>(userResponse, Objects.nonNull(userResponse) ? HttpStatus.FOUND : HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
-
-record CreateUserRequest(String email, String password, String displayName) {}
