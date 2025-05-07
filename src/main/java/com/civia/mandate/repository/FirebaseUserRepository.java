@@ -41,7 +41,7 @@ public class FirebaseUserRepository {
     public String getUser(String token) {
 
         try {
-            FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(token);
+            FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(token.replace("Bearer ", ""));
             return decodedToken.getEmail();
         }catch(FirebaseAuthException exception){
             throw new RuntimeException(exception.getMessage());

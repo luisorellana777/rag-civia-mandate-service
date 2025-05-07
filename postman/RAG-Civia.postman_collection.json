@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "58521c12-e4a9-4f7c-bc22-8678e705e1b5",
+		"_postman_id": "99b74d2c-d8be-4d06-8fa8-69acfadb6bb1",
 		"name": "RAG-Civia",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "3581147"
@@ -425,6 +425,35 @@
 								}
 							}
 						},
+						"url": {
+							"raw": "http://localhost:8088/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
 						"url": {
 							"raw": "http://localhost:8088/users",
 							"protocol": "http",
