@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.35.0 (HEAD)
+  labels:
+    io.kompose.service: rag-civia-mandate-service
+  name: rag-civia-mandate-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: rag-civia-mandate-service
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.35.0 (HEAD)
+      labels:
+        io.kompose.service: rag-civia-mandate-service
+    spec:
+      containers:
+        - env:
+            - name: DB_CLUSTER
+              valueFrom:
+                secretKeyRef:
+                  name: rag-civia-mandate-service-secrets
+                  key: DB_CLUSTER
+            - name: DB_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: rag-civia-mandate-service-secrets
+                  key: DB_KEY
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: rag-civia-mandate-service-secrets
+                  key: DB_NAME
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: rag-civia-mandate-service-secrets
+                  key: DB_USER
+            - name: FIREBASE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: rag-civia-mandate-service-secrets
+                  key: FIREBASE_API_KEY
+            - name: GEMINI_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: rag-civia-mandate-service-secrets
+                  key: GEMINI_KEY
+            - name: OPENCAGE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: rag-civia-mandate-service-secrets
+                  key: OPENCAGE_KEY
+            - name: FIREBASE_JSON_PATH
+              value: /app/firebase-service-account.json
+          volumeMounts:
+            - name: firebase-key-volume
+              mountPath: /app/firebase-service-account.json
+              subPath: firebase-service-account.json
+              readOnly: true
+          image: luisorellanaa/rag-civia-mandate-service:0.6.2-SNAPSHOT
+          name: rag-civia-mandate-service
+          ports:
+            - containerPort: 8088
+              protocol: TCP
+      restartPolicy: Always
+      volumes:
+      - name: firebase-key-volume
+        secret:
+          secretName: firebase-key
