@@ -19,13 +19,12 @@ public class UserController {
 
     @PostMapping("/users")
     @PreAuthorize("hasAnyRole('ADMINISTRATOR')")
-    public ResponseEntity<Boolean> createUser(@RequestBody UserRequest request) {
-        boolean isUserCreated = false;
+    public ResponseEntity<Void> createUser(@RequestBody UserRequest request) {
         try {
-            isUserCreated = userService.createUser(request);
-            return new ResponseEntity<>(isUserCreated, isUserCreated ? HttpStatus.CREATED : HttpStatus.ALREADY_REPORTED);
+            boolean isUserCreated = userService.createUser(request);
+            return new ResponseEntity<>(isUserCreated ? HttpStatus.CREATED : HttpStatus.ALREADY_REPORTED);
         } catch (Exception e) {
-            return new ResponseEntity<>(isUserCreated, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

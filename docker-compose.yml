@@ -1,9 +1,11 @@
 services:
   rag-civia-mandate-service:
-    image: luisorellanaa/rag-civia-mandate-service:0.6.1-SNAPSHOT
+    image: luisorellanaa/rag-civia-mandate-service:0.6.2-SNAPSHOT
     ports:
       - "8088:8088"
     restart: always
+    volumes:
+      - [local-key]:[volume-key]
     environment:
       DB_CLUSTER: ""
       DB_KEY: ""
