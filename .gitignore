@@ -40,3 +40,4 @@ firebase-service-account.json
 postman/DEV.postman_environment.json
 /docker-compose-secrets.yml
 /kubernetes/rag-civia-mandate-service-secrets.yaml
+/.run/
