@@ -6,18 +6,19 @@ plugins {
 
 group = 'com.civia.mandate'
 version = System.getenv('CURRENT_VERSION')
+def docker_user = System.getenv('DOCKER_USER')
 
 task kubernetesDeploy(type: Exec) {
-	commandLine "kubectl", "set", "image", "deployment/rag-civia-mandate-service", "rag-civia-mandate-service=luisorellanaa/${rootProject.name}:${version}"
+	commandLine "kubectl", "set", "image", "deployment/rag-civia-mandate-service", "rag-civia-mandate-service=${docker_user}/${rootProject.name}:${version}"
 }
 
 task dockerBuildImage(type: Exec) {
-	commandLine "docker", "build", "--build-arg", "VERSION=${version}", ".", "-t", "luisorellanaa/${rootProject.name}:${version}"
+	commandLine "docker", "build", "--build-arg", "VERSION=${version}", ".", "-t", "${docker_user}/${rootProject.name}:${version}"
 }
 
 task dockerPushImage(type: Exec) {
 	dependsOn dockerBuildImage
-	commandLine "docker", "push", "luisorellanaa/${rootProject.name}:${version}"
+	commandLine "docker", "push", "${docker_user}/${rootProject.name}:${version}"
 }
 
 tasks.named('build') {
