@@ -57,8 +57,8 @@ public class MandatesService {
         return mapper.dtoToResponse(mandateDto);
     }
 
-    public MandatePageResponse getMandatesByStateAndDepartment(Status status, String department, int page, int size) {
-        MandatePageResponse mandatesPage = mandateRepository.getMandates(status, department, page, size);
+    public MandatePageResponse getMandatesByStateAndDepartment(Status status,String department, String rut, int page, int size) {
+        MandatePageResponse mandatesPage = mandateRepository.getMandates(status, department,rut, page, size);
         List mandatesResponse = mapper.dtoToResponses(mandatesPage.getContent());
         mandatesPage.setContent(mandatesResponse);
         return mandatesPage;

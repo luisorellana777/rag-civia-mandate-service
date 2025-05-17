@@ -80,7 +80,7 @@ public class MandateRepository {
         return mapper.modelToDto(mandateModel);
     }
 
-    public MandatePageResponse getMandates(Status status, String department, int page, int size) {
+    public MandatePageResponse getMandates(Status status, String department, String rut, int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size);
 
@@ -88,20 +88,26 @@ public class MandateRepository {
 
         boolean noDepartment = Objects.isNull(department) || department.isEmpty() || department.isBlank();
 
-        if(Objects.isNull(status) && noDepartment){
+        boolean noRut = Objects.isNull(rut) || rut.isEmpty() || rut.isBlank();
+
+        if(Objects.isNull(status) && noDepartment && noRut){
 
             mandatesPage = mandateModelRepository.findAll(pageable);
 
-        }else if (Objects.nonNull(status) && noDepartment){
+        }else if (Objects.nonNull(status) && noDepartment && noRut){
 
             mandatesPage = mandateModelRepository.findByStatus(status, pageable);
 
-        }else if(Objects.isNull(status)){
+        }else if(Objects.isNull(status) && noRut){
 
             mandatesPage = mandateModelRepository.findByDepartment(department, pageable);
 
+        }else if(Objects.isNull(status)  && noDepartment){
+
+            mandatesPage = mandateModelRepository.findByRut(rut, pageable);
+
         }else{
-            mandatesPage = mandateModelRepository.findByStatusAndDepartment(status, department, pageable);
+            mandatesPage = mandateModelRepository.findByStatusAndDepartmentAndRut(status, department, rut, pageable);
         }
 
 

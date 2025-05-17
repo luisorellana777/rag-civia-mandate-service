@@ -64,7 +64,7 @@ spec:
               mountPath: /app/firebase-service-account.json
               subPath: firebase-service-account.json
               readOnly: true
-          image: luisorellanaa/rag-civia-mandate-service:0.6.3-SNAPSHOT
+          image: luisorellanaa/rag-civia-mandate-service:0.6.4-SNAPSHOT
           name: rag-civia-mandate-service
           ports:
             - containerPort: 8088

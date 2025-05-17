@@ -23,7 +23,9 @@ public interface MandateModelRepository extends MongoRepository<MandateModel, St
 
     Page<MandateModel> findByStatus(Status status, Pageable pageable);
 
-    Page<MandateModel> findByStatusAndDepartment(Status status, String department, Pageable pageable);
+    Page<MandateModel> findByStatusAndDepartmentAndRut(Status status, String department, String rut, Pageable pageable);
 
     Page<MandateModel> findByDepartment(String department, Pageable pageable);
+
+    Page<MandateModel> findByRut(String rut, Pageable pageable);
 }
