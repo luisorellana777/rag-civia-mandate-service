@@ -42,10 +42,10 @@ public class MandatesController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMINISTRATOR', 'OFFICER', 'INSPECTOR')")
-    public ResponseEntity<MandatePageResponse> getMandatesByStateAndDepartment(@RequestParam(name = "status", required = false) Status status, @RequestParam(name = "department", required = false) String department, @RequestParam(defaultValue = "0") int page,
+    @PreAuthorize("hasAnyRole('ADMINISTRATOR', 'OFFICER', 'INSPECTOR','CLERK')")
+    public ResponseEntity<MandatePageResponse> getMandatesByStateAndDepartmentAndRut(@RequestParam(name = "status", required = false) Status status, @RequestParam(name = "department", required = false) String department, @RequestParam(name = "rut", required = false) String rut, @RequestParam(defaultValue = "0") int page,
                                                                     @RequestParam(defaultValue = "10") int size) throws JsonProcessingException {
-        MandatePageResponse pagesMandates = service.getMandatesByStateAndDepartment(status, department, page, size);
+        MandatePageResponse pagesMandates = service.getMandatesByStateAndDepartment(status, department,rut, page, size);
         return new ResponseEntity<>(pagesMandates, HttpStatus.OK);
     }
 

@@ -1,6 +1,6 @@
 services:
   rag-civia-mandate-service:
-    image: luisorellanaa/rag-civia-mandate-service:0.6.3-SNAPSHOT
+    image: luisorellanaa/rag-civia-mandate-service:0.6.4-SNAPSHOT
     ports:
       - "8088:8088"
     restart: always
